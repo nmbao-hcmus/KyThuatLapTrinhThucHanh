@@ -1,0 +1,2691 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <title>Kỹ Thuật Lập Trình</title>
+    <style>
+
+      .hidden {
+        display: none;
+        /* For testing purposes, change to block to see content*/
+        /* display: block; */
+      }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+            line-height: 1.6;
+
+            background: hsla(46, 73%, 75%, 1);
+            background: linear-gradient(180deg, hsla(46, 73%, 75%, 1) 0%, hsla(176, 73%, 88%, 1) 100%);
+            background: -moz-linear-gradient(180deg, hsla(46, 73%, 75%, 1) 0%, hsla(176, 73%, 88%, 1) 100%);
+            background: -webkit-linear-gradient(180deg, hsla(46, 73%, 75%, 1) 0%, hsla(176, 73%, 88%, 1) 100%);
+            filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#EED991", endColorstr="#CCF7F4", GradientType=1);
+        }
+
+        header {
+            /* background: #2c3e50; */
+            color: #380505;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: hsla(332, 53%, 82%, 1);
+            background: linear-gradient(90deg, hsla(332, 53%, 82%, 1) 40%, hsla(176, 57%, 89%, 1) 100%);
+            background: -moz-linear-gradient(90deg, hsla(332, 53%, 82%, 1) 40%, hsla(176, 57%, 89%, 1) 100%);
+            background: -webkit-linear-gradient(90deg, hsla(332, 53%, 82%, 1) 40%, hsla(176, 57%, 89%, 1) 100%);
+            filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#E9B7CE", endColorstr="#D3F3F1", GradientType=1);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+
+            font-family: 'Be Vietnam Pro', sans-serif;
+            margin: 0;
+            font-size: 26px;
+            /* Tăng kích thước font */
+
+            background: linear-gradient(125deg, #7f0ab5, #380ab5, #0a0ab5, #0ab5b5, #0ab538, #b5b50a, #b50a0a, #b50a5a, #570ab5, #100ab5);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            animation: techGradient 3s ease-in infinite;
+            /* Tăng tốc độ animation */
+
+        }
+
+        @keyframes techGradient {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        nav select {
+            padding: 10px 15px;
+            /* Tăng padding */
+            border: 2px solid #00c6ff;
+            /* Viền màu neon */
+            border-radius: 20px;
+            /* background-color: transparent; Nền trong suốt */
+            color: #5315ef;
+            font-size: 14px;
+            cursor: pointer;
+            outline: none;
+            /* Bỏ viền outline khi focus */
+            transition: all 0.3s ease;
+
+            /* From https://css.glass */
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(135, 255, 241, 0.993);
+        }
+
+        nav select:hover,
+        nav select:focus {
+            background-color: #00c6ff;
+            /* Đổi màu nền khi hover/focus */
+            color: white;
+            /* Đổi màu chữ */
+            box-shadow: 0 0 10px #00c6ff;
+            /* Thêm hiệu ứng phát sáng */
+        }
+
+        menu {
+            border-radius: 15px;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .intro-card {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 50%, #a1c4fd 100%);
+            border-radius: 15px;
+            padding: 20px 25px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            color: #333;
+            /* chữ tối để nổi trên màu dịu */
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background-size: 150% 150%;
+            overflow: hidden;
+        }
+
+        .intro-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+            animation: movingGradient 4s ease infinite;
+            /* Áp dụng hiệu ứng animation */
+        }
+
+        /* Định nghĩa hiệu ứng keyframes */
+        @keyframes movingGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            25% {
+                background-position: 10% 60%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            75% {
+                background-position: 90% 40%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .card-row {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .imgselfie {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+            border-radius: 50%;
+            border: 3px solid #3498db;
+
+        }
+
+        .imgselfie img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .imgselfie img.active {
+            opacity: 1;
+        }
+
+        .imgselfie:hover {
+            transform: scale(2.05) translateY(-6%) translateX(4%);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 45%;
+        }
+
+        .img-center {
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .img-center img {
+            max-width: 80%;
+            border-radius: 10px;
+        }
+
+        .img-center img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            border: 2px solid #7434db;
+        }
+
+        .content h2 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+        }
+
+        .content p {
+            margin: 0;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .content a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Accordion & table styles giữ nguyên từ code cũ */
+        .accordion {
+            margin: 10px 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .accordion .plus {
+            background: #3498db;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-bottom: 5px;
+        }
+
+        .accordion .minus {
+            background: #5dade2;
+            padding: 8px 10px;
+            margin: 5px 0 5px 20px;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .accordion .noidungminus {
+            background: #c4ff6c;
+            padding: 5px 10%;
+            margin: 5px 0 5px 30px;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .accordion .star {
+            background: #d6eaf8;
+            padding: 6px 10px;
+            margin: 5px 0 15px 40px;
+            border-radius: 10px;
+        }
+
+        .accordion .minus:hover {
+            color: #fff;
+            transform: translateY(-2px);
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .truoctable:hover {
+            cursor: pointer;
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* Extra-info bên phải */
+        .extra-info {
+            margin-left: auto;
+            text-align: left;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .extra-info p {
+            margin: 5px 0;
+        }
+
+        .extra-info span {
+            margin-right: 5px;
+        }
+
+        /* Icon nhỏ chuyển động nhẹ khi hover toàn card */
+        .intro-card:hover .extra-info span {
+            transform: translateY(-3px);
+            transition: transform 0.3s ease;
+        }
+
+        /* Extra-info toàn bộ fade nhẹ khi hover */
+        .intro-card:hover .extra-info {
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 800px) {
+            .intro-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .extra-info {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Kỹ Thuật Lập Trình</h1>
+        <nav>
+            <select id="menu">
+                <option value="">-- Đến đề mục --</option>
+                <option value="week1">Tuần 1</option>
+                <option value="week2">Tuần 2</option>
+                <option value="week3">Tuần 3</option>
+                <option value="week4">Tuần 4</option>
+            </select>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <!-- Giới thiệu dạng card mới -->
+        <div class="intro-card">
+            <!-- Ảnh tròn -->
+            <div class="imgselfie" id="profile-picture-container">
+                <img src="ChanDung.jpg" alt="Chân dung KS. Nguyễn Mạnh Bảo" class="active">
+                <img src="ChanDung2.jpg" alt="Chân dung KS. Nguyễn Mạnh Bảo 2">
+                <img src="ChanDung3.jpg" alt="Chân dung KS. Nguyễn Mạnh Bảo 3">
+                <img src="ChanDung4.jpg" alt="Chân dung KS. Nguyễn Mạnh Bảo 4">
+            </div>
+
+            <!-- Nội dung chính -->
+            <div class="content">
+                <h2>KS. Nguyễn Mạnh Bảo</h2>
+                <p>
+                    Trợ Giảng Khoa Vật lý - Vật lý Kỹ Thuật <br>
+                    Bộ môn Vật lý Chất rắn<br>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nmbao@hcmus.edu.vn"
+                        target="_blank">nmbao@hcmus.edu.vn</a>
+                </p>
+            </div>
+
+            <!-- Info + icon bên phải -->
+            <div class="extra-info">
+                <p><span>👨‍🏫</span>1 năm kinh nghiệm</p>
+                <p><span>📚</span>Chuyên ngành: Vật lý Chất rắn</p>
+                <p><span>🏫</span>Đại học Quốc gia TP.HCM</p>
+            </div>
+        </div>
+        <!-- Tuần 1 -->
+        <div id="week1" class="accordion">
+            <div class="plus">+ Tuần 1</div>
+            <div class="hidden">
+                <div class="minus">- Giới thiệu Dev C++</div>
+                <div class="hidden">
+                    <div class="noidungminus">
+                        * Tạo project
+                        <br>* Thêm source file
+                        <br>* Biên dịch và chạy chương trình
+                        <br>* Cách đọc lỗi
+                    </div>
+                    <div class="hidden">
+                        <div class="star"><strong>Dev-C++</strong> là một môi trường phát triển tích hợp (IDE –
+                            Integrated
+                            Development
+                            Environment) dành cho lập trình ngôn ngữ C và C++.
+                            <div class="img-center">
+                                <img src="image/DevCTongQuat.png" alt="Hình tổng quát">
+                                <div class="note">(Màn hình chính)</div>
+                            </div>
+                        </div>
+                        <div class="star">
+                            <strong>Tạo project:</strong>
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;Vào menu File → New → Project…
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;Chọn mục Console Application
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;Chọn ngôn ngữ C Project
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;Đặt tên project (ví dụ: Bai1)
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;Chọn nơi lưu → bấm OK
+
+                            <div class="img-center">
+                                <img src="image/DevC_FileNewProject.png" alt="Hình File->New->Project">
+                                <div class="note">(Hình File->New->Project)</div>
+                            </div>
+
+                            <div class="img-center">
+                                <img src="image/DevC_NewProject_Noted.png" alt="Hình New Project">
+                                <div class="note">(Tạo Project)</div>
+                            </div>
+                        </div>
+                        <div class="star">
+                            <strong>Giới thiệu màn hình chính:</strong>
+                            <div style="color: tomato;">&nbsp;&nbsp;&nbsp;&nbsp;Thanh menu công cụ:(Màu
+                                ĐỎ)
+                                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- &nbsp;&nbsp;Chứa các tùy chọn chính để quản lý
+                                dự
+                                án, tệp và chương trình đồng thời là phím tắt cho các chức năng
+
+                            </div>
+                            <div style="color: rgb(64, 198, 37);">&nbsp;&nbsp;&nbsp;&nbsp;Cửa sổ soạn thảo: nơi viết mã
+                                nguồn code (Màu XANH LÁ)</div>
+                            <div style="color: rgb(207, 177, 6);">&nbsp;&nbsp;&nbsp;&nbsp;Cửa sổ Project: hiển thị các
+                                file
+                                trong project (Màu VÀNG)</div>
+
+                            <div class="img-center"><img src="image/DevC_ManHinhChinh_Noted.png"
+                                    alt="Hình Màn hình chính">
+                                <div class="note">(Màn hình chính)</div>
+                            </div>
+                        </div>
+                        <div class="star">
+                            <strong>Thêm source file (.c):</strong>
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;Vào menu File → New → Source File
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;Viết code trong cửa sổ soạn thảo
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;Lưu file với đuôi .c (ví dụ: Bai1.c)
+                            <div class="img-center">
+                                <img src="image/DevC_FileNewSourceFile.png" alt="Hình Thêm Source File">
+                                <div class="note">(Thêm Source File)</div>
+                            </div>
+                            <div class="img-center">
+                                <img src="image/CodeDonGianLamQuen.png" alt="Hình code">
+                                <div class="note">(Code vào phần soạn thảo)</div>
+                            </div>
+                            <div class="img-center"><img src="image/CodeDonGianLamQuen_Save.png" alt="Hình Save">
+                                <div class="note">(Lưu file bằng Ctrl + S)</div>
+                            </div>
+
+                        </div>
+                        <div class="star">
+                            <strong>Biên dịch và chạy chương trình:</strong>
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;Vào menu Execute → Compile & Run
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;Hoặc bấm phím tắt F11
+                            <div class="img-center">
+                                <img src="image/CodeDonGianLamQuen_CompileandRun.png"
+                                    alt="Hình Biên dịch và chạy chương trình">
+                                <div class="note">(Biên dịch và chạy chương trình)</div>
+                            </div>
+                            <div class="img-center">
+                                <img src="image/CodeDonGianLamQuen_KetQuaChay.png" alt="Hình kết quả chạy chương trình">
+                                <div class="note">(Kết quả chạy chương trình)</div>
+                            </div>
+                        </div>
+                        <div class="star">
+                            <strong>Cách đọc lỗi:</strong>
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;Kiểm tra lỗi sau khi biên dịch
+                            <div class="img-center">
+                                <div class='row' style="justify-content: center;">
+                                    <img src="image/CodeDonGianLamQuen_CompileOK.png" alt="Hình Code OK">
+                                    <img style="max-width: 50%;" src="image/CodeDonGianLamQuen_CompileERROR_1_Noted.png"
+                                        alt="Hình Code Error">
+                                </div>
+                                <div class="note">(Biên dịch ok [Bên trái] và biên dịch lỗi [Bên phải] )</div>
+                            </div>
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;Đọc lỗi sau khi biên dịch
+                            <div class="img-center">
+                                <img src="image/CodeDonGianLamQuen_CompileERROR_2_Noted.png"
+                                    alt="Hình kết quả biên dịch lỗi">
+                                <div class="note">(Lỗi biên dịch)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="minus">- Cấu trúc chương trình C</div>
+                <div class="hidden">
+                    <div class="star">
+
+                        <strong>Cấu trúc cơ bản của chương trình C:</strong>
+                        <div class="img-center">
+                            <img src="image/CauTrucCoBanCode.png" alt="Hình Cấu trúc cơ bản của chương trình C">
+                            <div class="note">(Cấu trúc cơ bản chương trình)</div>
+                        </div>
+                        <br>&nbsp;&nbsp;&nbsp;&nbsp;<b>Các lệnh tiền xử lý:</b> Đây là các dòng bắt đầu bằng #, ví dụ
+                        như #include, dùng để đưa
+                        các thư viện hoặc tệp tiêu đề (header files) vào chương trình.
+                        <br>&nbsp;&nbsp;&nbsp;&nbsp;<b>Các hàm:</b> Đây là một khối code được đặt tên, thực hiện
+                        một nhiệm vụ cụ thể và có thể được gọi (sử dụng) nhiều lần trong chương trình
+                        <br>&nbsp;&nbsp;&nbsp;&nbsp;<b>Các comment:</b> Đây là chú thích không được biên dịch, chỉ để
+                        người đọc hiểu code.
+                        <br>&nbsp;&nbsp;&nbsp;&nbsp;<b>Các lệnh và biểu thức:</b> Đây là các câu lệnh thực hiện các thao
+                        tác cụ thể, như tính toán, gán giá trị, gọi hàm v.v.
+                        <br>&nbsp;&nbsp;&nbsp;&nbsp;<b>Các biến:</b> Đây là vùng nhớ CÓ TÊN để lưu trữ dữ liệu
+                    </div>
+                </div>
+                <div class="minus">- Cú pháp C cơ bản</div>
+                <div class="hidden">
+                    <div class="noidungminus">
+                        * Dấu chấm phẩy;
+                        <br>* Comment trong C
+                        <br>* Định danh trong C
+                        <br>* Các từ khóa trong C
+                    </div>
+                    <div class="hidden">
+                        <div class="star"><b>Dấu chấm phẩy trong C:</b>
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;Dấu chấm phẩy (;) được sử dụng để kết thúc một câu lệnh trong C.
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;Mỗi câu lệnh PHẢI kết thúc bằng dấu chấm phẩy.
+                            <div class="img-center">
+                                <img src="image/ViDuMoiCauLenh.png" alt="Hình Ví dụ mỗi câu lệnh">
+                                <div class="note">(Ví Dụ)</div>
+                            </div>
+                        </div>
+                        <div class="star"><b>Comment trong C:</b>
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;Comment (chú thích) được sử dụng để giải thích code, giúp người
+                            đọc hiểu rõ hơn về
+                            chức năng của các đoạn code.
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;Có hai loại comment trong C:
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Comment một dòng: Sử dụng // để bắt đầu comment,
+                            ví dụ: // Đây là
+                            comment một dòng
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Comment nhiều dòng: Sử dụng /* để bắt đầu và */ để
+                            kết thúc, ví dụ:
+                            /* Đây là comment nhiều dòng */
+                            <div class="img-center">
+                                <img src="image/ViDuComment.png" alt="Hình Ví dụ Comment">
+                                <div class="note">(Ví Dụ)</div>
+                            </div>
+
+                        </div>
+                        <div class="star"><b>Định danh trong C:</b>
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;Định danh (identifier) là tên được đặt cho các biến, hàm, mảng,
+                            v.v. trong C.
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;Quy tắc đặt tên định danh:
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Bắt đầu bằng chữ cái (a-z, A-Z) hoặc dấu gạch dưới
+                            (_)
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Không được bắt đầu bằng số
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Có thể chứa chữ cái, số (0-9) và dấu gạch dưới (_)
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Không được chứa khoảng trắng hoặc ký tự đặc biệt
+                            như @, #,
+                            $, %, v.v.
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <b>Có phân biệt</b> chữ hoa và chữ thường
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Không được sử dụng từ khóa đã được định nghĩa
+                            trong C
+                            <div class="img-center">
+                                <img src="image/ViDuDinhDanh.png" alt="Hình Ví dụ Định Danh">
+                                <div class="note">(Ví Dụ)</div>
+                            </div>
+                        </div>
+                        <div class="star"><b>Các từ khóa trong C:</b>
+                            <br> &nbsp;&nbsp;&nbsp;&nbsp;Từ khóa (keyword) là các từ đã được định nghĩa sẵn trong ngôn
+                            ngữ C, có ý nghĩa
+                            đặc biệt và không thể sử dụng làm tên định danh.
+                            <h1 class="truoctable">Bảng tóm tắt một số Từ Khóa trong C</h1>
+                            <div class="hidden">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Từ khóa</th>
+                                            <th>Mô tả ngắn gọn</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Cơ bản nhất -->
+                                        <tr>
+                                            <td><b><a href="https://www.w3schools.com/c/c_data_types_numbers.php"
+                                                        target="_blank">int</a></b></td>
+                                            <td>Kiểu dữ liệu số nguyên.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b><a href="https://www.w3schools.com/c/c_data_types_characters.php"
+                                                        target="_blank">char</a></b></td>
+                                            <td>Kiểu dữ liệu ký tự.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b><a href="https://www.w3schools.com/c/c_data_types_numbers.php"
+                                                        target="_blank">float</a></b></td>
+                                            <td>Kiểu dữ liệu số thực độ chính xác đơn.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b><a href="https://www.w3schools.com/c/c_data_types_numbers.php"
+                                                        target="_blank">double</a></b></td>
+                                            <td>Kiểu dữ liệu số thực độ chính xác kép.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b><a href="https://www.w3schools.com/c/c_constants.php"
+                                                        target="_blank">const</a></b></td>
+                                            <td>Khai báo một hằng số, giá trị không thể thay đổi.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b><a href="https://www.w3schools.com/c/c_conditions.php"
+                                                        target="_blank">if</a></b></td>
+                                            <td>Thực hiện khối mã nếu điều kiện đúng.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b><a href="https://www.w3schools.com/c/c_switch.php"
+                                                        target="_blank">switch</a></b></td>
+                                            <td>Câu lệnh điều kiện để chọn một trong nhiều khối mã.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b><a href="https://www.w3schools.com/c/c_switch.php"
+                                                        target="_blank">case</a></b></td>
+                                            <td>Đánh dấu một trường hợp trong câu lệnh switch.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b><a href="https://www.w3schools.com/c/ref_keyword_default.php"
+                                                        target="_blank">default</a></b></td>
+                                            <td>Khối mã mặc định trong câu lệnh switch.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b><a href="https://www.w3schools.com/c/c_for_loop.php"
+                                                        target="_blank">for</a></b></td>
+                                            <td>Tạo vòng lặp for.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b><a href="https://www.w3schools.com/c/c_while_loop.php"
+                                                        target="_blank">while</a></b></td>
+                                            <td>Tạo vòng lặp while.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b><a href="https://www.w3schools.com/c/c_do_while_loop.php"
+                                                        target="_blank">do</a></b></td>
+                                            <td>Tạo vòng lặp do-while, đảm bảo chạy ít nhất một lần.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b><a href="https://www.w3schools.com/c/c_break_continue.php"
+                                                        target="_blank">break</a></b></td>
+                                            <td>Thoát khỏi vòng lặp hoặc câu lệnh switch.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b><a href="https://www.w3schools.com/c/c_break_continue.php"
+                                                        target="_blank">continue</a></b></td>
+                                            <td>Bỏ qua phần còn lại của vòng lặp hiện tại.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b><a href="https://www.w3schools.com/c/c_functions.php"
+                                                        target="_blank">void</a></b></td>
+                                            <td>Kiểu dữ liệu rỗng hoặc hàm không trả về giá trị.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b><a href="https://www.w3schools.com/c/ref_keyword_return.php"
+                                                        target="_blank">return</a></b></td>
+                                            <td>Kết thúc hàm và trả về một giá trị.</td>
+                                        </tr>
+
+                                        <!-- Trung cấp -->
+                                        <tr>
+                                            <td><a href="https://www.w3schools.com/c/c_structs.php"
+                                                    target="_blank">struct</a></td>
+                                            <td>Khai báo một cấu trúc.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="https://www.w3schools.com/c/c_unions.php"
+                                                    target="_blank">union</a>
+                                            </td>
+                                            <td>Khai báo một union.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="https://www.w3schools.com/c/c_enums.php"
+                                                    target="_blank">enum</a>
+                                            </td>
+                                            <td>Khai báo một kiểu liệt kê.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="https://www.w3schools.com/c/ref_keyword_static.php"
+                                                    target="_blank">static</a></td>
+                                            <td>Giữ lại giá trị của biến cục bộ giữa các lần gọi.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="https://www.geeksforgeeks.org/c/typedef-in-c/"
+                                                    target="_blank">typedef</a></td>
+                                            <td>Tạo một tên mới cho một kiểu dữ liệu đã tồn tại.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="https://www.w3schools.com/c/ref_keyword_sizeof.php"
+                                                    target="_blank">sizeof</a></td>
+                                            <td>Toán tử trả về kích thước của một kiểu dữ liệu/biến.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="https://www.geeksforgeeks.org/c/goto-statement-in-c/"
+                                                    target="_blank">goto</a></td>
+                                            <td>Chuyển luồng thực thi đến một nhãn đã định nghĩa.</td>
+                                        </tr>
+
+                                        <!-- Ít dùng cho cơ bản -->
+                                        <tr>
+                                            <td><a href="https://www.w3schools.com/c/ref_keyword_long.php"
+                                                    target="_blank">long</a></td>
+                                            <td>Bổ ngữ cho int, tạo kiểu dữ liệu có phạm vi lớn hơn.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="https://www.w3schools.com/c/ref_keyword_short.php"
+                                                    target="_blank">short</a></td>
+                                            <td>Bổ ngữ cho int, tạo kiểu dữ liệu có phạm vi nhỏ hơn.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="https://www.geeksforgeeks.org/digital-logic/different-ways-to-represent-signed-integer/"
+                                                    target="_blank">signed</a></td>
+                                            <td>Bổ ngữ cho kiểu số nguyên (có dấu).</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="https://www.w3schools.com/c/ref_keyword_unsigned.php"
+                                                    target="_blank">unsigned</a></td>
+                                            <td>Bổ ngữ cho kiểu số nguyên (không dấu).</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="https://www.w3schools.com/cpp/cpp_auto.asp"
+                                                    target="_blank">auto</a></td>
+                                            <td>Khai báo biến cục bộ với thời gian sống tự động.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="https://www.geeksforgeeks.org/c/understanding-extern-keyword-in-c/"
+                                                    target="_blank">extern</a></td>
+                                            <td>Khai báo biến/hàm được định nghĩa ở nơi khác.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="https://www.geeksforgeeks.org/c/understanding-register-keyword/"
+                                                    target="_blank">register</a></td>
+                                            <td>Gợi ý lưu biến trong thanh ghi CPU.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="https://www.geeksforgeeks.org/c/use-volatile-keyword-in-c/"
+                                                    target="_blank">volatile</a></td>
+                                            <td>Gợi ý không tối ưu hóa biến, vì giá trị có thể thay đổi bất ngờ.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="minus">- Kiểu dữ liệu</div>
+                <div class="hidden">
+                    <div class="star"><b>Kiểu dữ liệu trong C:</b>
+                        <br>&nbsp;&nbsp;&nbsp;&nbsp;Kiểu dữ liệu là cách xác định loại dữ liệu mà một biến có thể
+                        lưu trữ.
+                        <h1 class="truoctable">Bảng tóm tắt các Kiểu Dữ Liệu Cơ Bản trong C</h1>
+                        <div class="hidden">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Kiểu dữ liệu</th>
+                                        <th>Mô tả</th>
+                                        <th>Kích thước phổ biến</th>
+                                        <th>Phạm vi giá trị phổ biến</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>char</strong></td>
+                                        <td>Ký tự đơn (có dấu)</td>
+                                        <td>1 byte</td>
+                                        <td>-128 đến 127</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>unsigned char</strong></td>
+                                        <td>Ký tự không dấu</td>
+                                        <td>1 byte</td>
+                                        <td>0 đến 255</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>signed char</strong></td>
+                                        <td>Ký tự có dấu</td>
+                                        <td>1 byte</td>
+                                        <td>-128 đến 127</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>int</strong></td>
+                                        <td>Số nguyên cơ bản</td>
+                                        <td>4 byte</td>
+                                        <td>-2,147,483,648 đến 2,147,483,647</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>unsigned int</strong></td>
+                                        <td>Số nguyên không dấu</td>
+                                        <td>4 byte</td>
+                                        <td>0 đến 4,294,967,295</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>short</strong></td>
+                                        <td>Số nguyên ngắn</td>
+                                        <td>2 byte</td>
+                                        <td>-32,768 đến 32,767</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>unsigned short</strong></td>
+                                        <td>Số nguyên ngắn không dấu</td>
+                                        <td>2 byte</td>
+                                        <td>0 đến 65,535</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>long</strong></td>
+                                        <td>Số nguyên dài</td>
+                                        <td>4 hoặc 8 byte</td>
+                                        <td>-9.22 x 10<sup>18</sup> đến 9.22 x 10<sup>18</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>unsigned long</strong></td>
+                                        <td>Số nguyên dài không dấu</td>
+                                        <td>4 hoặc 8 byte</td>
+                                        <td>0 đến 1.84 x 10<sup>19</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>float</strong></td>
+                                        <td>Số thực độ chính xác đơn</td>
+                                        <td>4 byte</td>
+                                        <td>Khoảng 1.2 x 10<sup>-38</sup> đến 3.4 x 10<sup>38</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>double</strong></td>
+                                        <td>Số thực độ chính xác kép</td>
+                                        <td>8 byte</td>
+                                        <td>Khoảng 2.3 x 10<sup>-308</sup> đến 1.7 x 10<sup>308</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>long double</strong></td>
+                                        <td>Số thực độ chính xác mở rộng</td>
+                                        <td>10 hoặc 12 byte</td>
+                                        <td>Phạm vi lớn hơn double</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <h1 class="truoctable">Bảng độ chính xác của số thực C</h1>
+                        <div class="hidden">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Kiểu dữ liệu</th>
+                                        <th>Kích thước (byte)</th>
+                                        <th>Phạm vi giá trị</th>
+                                        <th>Độ chính xác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>float</strong></td>
+                                        <td>4</td>
+                                        <td>1.2E-38 tới 3.4E+38</td>
+                                        <td>6-7 chữ số thập phân</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>double</strong></td>
+                                        <td>8</td>
+                                        <td>2.3E-308 tới 1.7E+308</td>
+                                        <td>15-16 chữ số thập phân</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>long double</strong></td>
+                                        <td>10 hoặc 12</td>
+                                        <td>3.4E-4932 tới 1.1E+4932</td>
+                                        <td>18-19 chữ số thập phân (tùy thuộc vào hệ thống)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <h1 class="truoctable">Bảng tóm tắt các chuỗi định dạng trong C</h1>
+                        <div class="hidden">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Kiểu dữ liệu</th>
+                                        <th>Format specifier</th>
+                                        <th>Ví dụ</th>
+                                    </tr>
+                                </thead>
+                                <tr>
+                                    <td>int</td>
+                                    <td><code>%d</code> hoặc <code>%i</code></td>
+                                    <td><code>printf("%d", 123);</code> → 123</td>
+                                </tr>
+                                <tr>
+                                    <td>char</td>
+                                    <td><code>%c</code></td>
+                                    <td><code>printf("%c", 'A');</code> → A</td>
+                                </tr>
+                                <tr>
+                                    <td>float</td>
+                                    <td><code>%f</code></td>
+                                    <td><code>printf("%f", 3.14f);</code> → 3.140000</td>
+                                </tr>
+                                <tr>
+                                    <td>double</td>
+                                    <td><code>%lf</code> (scanf), <code>%f</code> (printf)</td>
+                                    <td><code>printf("%f", 3.14);</code> → 3.140000</td>
+                                </tr>
+                                <tr>
+                                    <td>short int</td>
+                                    <td><code>%hd</code></td>
+                                    <td><code>printf("%hd", (short)123);</code> → 123</td>
+                                </tr>
+                                <tr>
+                                    <td>unsigned int</td>
+                                    <td><code>%u</code></td>
+                                    <td><code>printf("%u", 123);</code> → 123</td>
+                                </tr>
+                                <tr>
+                                    <td>long int</td>
+                                    <td><code>%ld</code></td>
+                                    <td><code>printf("%ld", 123456L);</code> → 123456</td>
+                                </tr>
+                                <tr>
+                                    <td>long long int</td>
+                                    <td><code>%lld</code></td>
+                                    <td><code>printf("%lld", 123456789LL);</code> → 123456789</td>
+                                </tr>
+                                <tr>
+                                    <td>unsigned long int</td>
+                                    <td><code>%lu</code></td>
+                                    <td><code>printf("%lu", 123456UL);</code> → 123456</td>
+                                </tr>
+                                <tr>
+                                    <td>unsigned long long int</td>
+                                    <td><code>%llu</code></td>
+                                    <td><code>printf("%llu", 123456789ULL);</code> → 123456789</td>
+                                </tr>
+                                <tr>
+                                    <td>signed char</td>
+                                    <td><code>%hhd</code></td>
+                                    <td><code>printf("%hhd", (signed char)-10);</code> → -10</td>
+                                </tr>
+                                <tr>
+                                    <td>unsigned char</td>
+                                    <td><code>%hhu</code></td>
+                                    <td><code>printf("%hhu", (unsigned char)250);</code> → 250</td>
+                                </tr>
+                                <tr>
+                                    <td>long double</td>
+                                    <td><code>%Lf</code></td>
+                                    <td><code>printf("%Lf", 3.14159L);</code> → 3.141590</td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="minus">- Biến trong C</div>
+                <div class="hidden">
+                    <div class="star">
+                        <b>Cú pháp khai báo biến</b>
+                        <div
+                            style="background-color: #000000;color: #fff; padding: 10px; border-radius: 5px;justify-content: center;">
+                            <pre>&nbsp;&nbsp;&nbsp;&nbsp;&lt;kiểu_dữ_liệu&gt; &lt;tên_biến&gt;;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;kiểu_dữ_liệu&gt; &lt;tên_biến&gt; = &lt;giá_trị_khởi_tạo&gt;;
+</pre>
+                        </div>
+                    </div>
+                    <div class="star">
+                        <b>Ví dụ khai báo biến</b>
+                        <div class="img-center">
+                            <img src="image/ViDuTenBien.png" alt="Hình Khai báo biến trong C">
+                            <div class="note">(Khai báo biến trong C)</div>
+                        </div>
+                    </div>
+                    <div class="star">
+                        <b>Khai báo nhiều biến cùng kiểu</b>
+                        <div class="img-center">
+                            <img src="image/ViDuNhieuBien.png" alt="Hình Khai báo nhiều biến cùng kiểu trong C">
+                            <div class="note">(Khai báo nhiều biến cùng kiểu trong C)</div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="minus">- Hằng ký tự</div>
+                <div class="hidden">
+                    <div class="star">
+                        <h1 class="truoctable">Bảng tóm tắt các Hằng Ký Tự đặc biệt trong C</h1>
+                        <div class="hidden">
+                            <table>
+                                <thread>
+                                    <tr>
+                                        <th>Hằng ký tự</th>
+                                        <th>Ý nghĩa</th>
+                                        <th>Ví dụ</th>
+                                    </tr>
+                                </thread>
+                                <tr>
+                                    <td><code>\\</code></td>
+                                    <td>Dấu gạch chéo ngược <code>\</code></td>
+                                    <td><code>printf("C:\\path");</code> → C:\path</td>
+                                </tr>
+                                <tr>
+                                    <td><code>\'</code></td>
+                                    <td>Dấu nháy đơn <code>'</code></td>
+                                    <td><code>printf("\'A\'");</code> → 'A'</td>
+                                </tr>
+                                <tr>
+                                    <td><code>\"</code></td>
+                                    <td>Dấu nháy kép <code>"</code></td>
+                                    <td><code>printf("\"Hello\"");</code> → "Hello"</td>
+                                </tr>
+                                <tr>
+                                    <td><code>\?</code></td>
+                                    <td>Dấu hỏi <code>?</code> (tránh mơ hồ trong compiler cũ)</td>
+                                    <td><code>printf("\?");</code> → ?</td>
+                                </tr>
+                                <tr>
+                                    <td><code>\a</code></td>
+                                    <td>Âm báo (bell)</td>
+                                    <td><code>printf("\a");</code> → kêu "beep"</td>
+                                </tr>
+                                <tr>
+                                    <td><code>\b</code></td>
+                                    <td>Backspace (xóa lùi)</td>
+                                    <td><code>printf("AB\bC");</code> → AC</td>
+                                </tr>
+                                <tr>
+                                    <td><code>\f</code></td>
+                                    <td>Form feed (sang trang)</td>
+                                    <td><code>printf("Hello\fWorld");</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>\n</code></td>
+                                    <td>Newline (xuống dòng)</td>
+                                    <td><code>printf("Hello\nWorld");</code><br>→ Hello ⏎ World</td>
+                                </tr>
+                                <tr>
+                                    <td><code>\r</code></td>
+                                    <td>Carriage return (về đầu dòng)</td>
+                                    <td><code>printf("123\rAB");</code> → AB3</td>
+                                </tr>
+                                <tr>
+                                    <td><code>\t</code></td>
+                                    <td>Tab ngang</td>
+                                    <td><code>printf("A\tB\tC");</code> → A B C</td>
+                                </tr>
+                                <tr>
+                                    <td><code>\v</code></td>
+                                    <td>Tab dọc</td>
+                                    <td><code>printf("A\vB\vC");</code> → A ⏎ B ⏎ C (dọc)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>\ooo</code></td>
+                                    <td>Ký tự theo mã <b>bát phân</b> (octal)</td>
+                                    <td><code>printf("\141\142\143");</code> → abc</td>
+                                </tr>
+                                <tr>
+                                    <td><code>\xhh...</code></td>
+                                    <td>Ký tự theo mã <b>thập lục phân</b> (hex)</td>
+                                    <td><code>printf("\x41\x42\x43");</code> → ABC</td>
+                                </tr>
+
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="minus">- Định nghĩa hằng số</div>
+                <div class="hidden">
+                    <div class="star">
+                        <b>Định nghĩa hằng số:</b>
+                        <p>Trong C, có 2 cách chính để khai báo hằng số:</p>
+
+                        <h2>1. Dùng từ khóa <code>const</code></h2>
+                        <p>Hằng số được khai báo bằng <code>const</code> không thể thay đổi trong suốt chương trình.</p>
+                        <div
+                            style="background-color: #000000;color: #fff; padding: 10px; border-radius: 5px;justify-content: center;">
+                            <pre>const int MAX = 100;
+const float PI = 3.14159;</pre>
+                        </div>
+
+                        <h2>2. Dùng chỉ thị tiền xử lý <code>#define</code></h2>
+                        <p>Hằng số được khai báo bằng <code>#define</code> là thay thế văn bản trước khi biên dịch.</p>
+                        <div
+                            style="background-color: #000000;color: #fff; padding: 10px; border-radius: 5px;justify-content: center;">
+                            <pre>#define MAX 100
+#define PI 3.14159</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="minus">- Toán tử</div>
+                <div class="hidden">
+                    <div class="star">
+                        <h1 class="truoctable">Bảng tóm tắt các Toán Tử trong C</h1>
+                        <div class="hidden">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Loại toán tử</th>
+                                        <th>Toán tử</th>
+                                        <th>Chức năng</th>
+                                        <th>Ví dụ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Toán tử số học -->
+                                    <tr>
+                                        <td>Toán tử số học</td>
+                                        <td>+ - * / %</td>
+                                        <td>Cộng, trừ, nhân, chia, chia lấy dư</td>
+                                        <td>
+                                            <code>int a=10, b=3; a+b=13; a%b=1;</code>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Toán tử gán -->
+                                    <tr>
+                                        <td>Toán tử gán</td>
+                                        <td>=, +=, -=, *=, /=, %=</td>
+                                        <td>Gán giá trị, kết hợp gán + phép toán</td>
+                                        <td>
+                                            <code>c=5; c+=2; // c=7</code>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Toán tử tăng/giảm -->
+                                    <tr>
+                                        <td>Toán tử tăng/giảm</td>
+                                        <td>++ --</td>
+                                        <td>Tăng 1 hoặc giảm 1</td>
+                                        <td>
+                                            <code>int a=5; a++; // a=6</code>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Toán tử so sánh -->
+                                    <tr>
+                                        <td>Toán tử so sánh</td>
+                                        <td>== != &gt; &lt; &gt;= &lt;=</td>
+                                        <td>So sánh 2 giá trị, trả về 1 hoặc 0</td>
+                                        <td>
+                                            <code>5&gt;3 // 1 (true)</code>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Toán tử logic -->
+                                    <tr>
+                                        <td>Toán tử logic</td>
+                                        <td>&& || !</td>
+                                        <td>AND, OR, NOT</td>
+                                        <td>
+                                            <code>(a&gt;b &amp;&amp; b&gt;0) // 1</code>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Toán tử bit -->
+                                    <tr>
+                                        <td>Toán tử bit</td>
+                                        <td>&amp; | ^ ~ &lt;&lt; &gt;&gt;</td>
+                                        <td>AND, OR, XOR, NOT, dịch trái/phải bit</td>
+                                        <td>
+                                            <code>a &amp; b; a << 1;</code>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Toán tử điều kiện -->
+                                    <tr>
+                                        <td>Toán tử điều kiện</td>
+                                        <td>?:</td>
+                                        <td>Biểu thức điều kiện: condition ? value1 : value2</td>
+                                        <td>
+                                            <code>max=(a&gt;b)?a:b;</code>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Toán tử sizeof -->
+                                    <tr>
+                                        <td>Toán tử sizeof</td>
+                                        <td>sizeof()</td>
+                                        <td>Lấy kích thước bộ nhớ của biến hoặc kiểu</td>
+                                        <td>
+                                            <code>sizeof(int) // 4 (byte)</code>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Toán tử con trỏ -->
+                                    <tr>
+                                        <td>Toán tử con trỏ</td>
+                                        <td>* &amp; -> .</td>
+                                        <td>Lấy giá trị, địa chỉ, truy cập thành phần struct qua con trỏ</td>
+                                        <td>
+                                            <code>int *p=&a; *p=10;</code>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Tuần 2 -->
+        <div id="week2" class="accordion">
+            <div class="plus">+ Tuần 2</div>
+            <div class="hidden">
+                <div class="minus">- Cấu trúc rẽ nhánh</div>
+                <div class="hidden">
+                    <div class="noidungminus">
+                        * If
+                        <br>* If ... else
+                        <br>* If ... else if ... else
+                        <br>* Switch case
+                    </div>
+                    <div class="hidden">
+                        <div class="star">
+                            <h1>Cấu trúc rẽ nhánh cơ bản if:</h1>
+                            <div style="background-color: #000000;color: #fff; padding: 10px; border-radius: 5px;">
+                                <pre>if (điều_kiện) {
+    // Khối lệnh thực hiện nếu điều kiện đúng
+}</pre>
+                            </div>
+                            <br><b>Flowchart của cấu trúc If trong C:</b>
+                            <div class="img-center">
+                                <img style="max-height: 500px;" src="image_tuan2/If_flowchart.png"
+                                    alt="Hình If trong C">
+                                <div class="note">(Flowchart If trong C)</div>
+                            </div>
+                            <br><b style="color: red;">LƯU Ý:</b>
+                            <br>- Nếu điều kiện là <b>True</b>, khối lệnh bên trong sẽ được thực hiện.
+                            <br>- Nếu điều kiện là <b>False</b>, khối lệnh bên trong sẽ bị bỏ qua.
+                            <br>- Nếu không có khối lệnh nào, chương trình <b style="font-weight: bolder; color: red;">
+                                sẽ tiếp tục thực hiện các câu lệnh sau.</b>
+                            <br>- Nếu có nhiều câu lệnh, chúng sẽ được đặt trong dấu ngoặc nhọn `{}`.
+                            <br>- Nếu không có dấu ngoặc nhọn, chỉ câu lệnh đầu tiên sau <code>if</code> sẽ được thực
+                            hiện.
+                            <br><br><b>Ví dụ:</b>
+                            <div class="img-center">
+                                <img src="image_tuan2/If_CodeTrueFalse_Noted.png" alt="Ví dụ If trong C">
+                                <div class="note">(Ví dụ If trong C) <br>Bên trái là <b>True</b>; Bên phải là
+                                    <b>False</b>
+                                </div>
+                            </div>
+                            <div class="img-center">
+                                <img src="image_tuan2/If_CodeTrueFalse_KQ_Noted.png" alt="KQ Ví dụ If trong C">
+                                <div class="note">(Kết quả Ví dụ If trong C) <br>Bên trái là <b>True</b>; Bên phải là
+                                    <b>False</b>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="star">
+                            <h1>Cấu trúc rẽ nhánh cơ bản if ... else:</h1>
+                            <div style="background-color: #000000;color: #fff; padding: 10px; border-radius: 5px;">
+                                <pre>if (điều_kiện) {
+    // Khối lệnh thực hiện nếu điều kiện đúng
+} else {
+    // Khối lệnh thực hiện nếu điều kiện sai
+}</pre>
+                            </div>
+                            <br><b>Flowchart của cấu trúc If ... else trong C:</b>
+                            <div class="img-center">
+                                <img style="max-height: 500px;" src="image_tuan2/If-else_flowchart.png"
+                                    alt="Hình If ... else trong C">
+                                <div class="note">(Flowchart If ... else trong C)</div>
+                            </div>
+                            <br><b style="color: red;">LƯU Ý:</b>
+                            <br>- Nếu điều kiện là <b>True</b>, khối lệnh bên trong <code>if</code> sẽ được thực hiện.
+                            <br>- Nếu điều kiện là <b>False</b>, khối lệnh bên trong <code>else</code> sẽ được thực
+                            hiện.
+                            <br>- Nếu không có khối lệnh nào, chương trình <b style="font-weight: bolder; color: red;">
+                                sẽ tiếp tục thực hiện các câu lệnh sau.</b>
+                            <br>- Nếu có nhiều câu lệnh, chúng sẽ được đặt trong dấu ngoặc nhọn `{}`.
+                            <br>- Nếu không có dấu ngoặc nhọn, chỉ câu lệnh đầu tiên sau <code>if</code> hoặc
+                            <code>else</code> sẽ được thực hiện.
+                            <br><br><b>Ví dụ:</b>
+                            <div class="img-center">
+                                <img src="image_tuan2/If_Else_CodeTrueFalse_Noted.png" alt="Ví dụ If ... else trong C">
+                                <div class="note">(Ví dụ If ... else trong C) <br>Bên trái là <b>True</b>; Bên phải
+                                    là <b>False</b></div>
+                            </div>
+                            <div class="img-center">
+                                <img src="image_tuan2/If_Else_CodeTrueFalse_KQ_Noted.png"
+                                    alt="KQ Ví dụ If ... else trong C">
+                                <div class="note">(Kết quả Ví dụ If ... else trong C) <br>Bên trái là <b>True</b>;
+                                    Bên phải là <b>False</b></div>
+                            </div>
+
+                        </div>
+                        <div class="star">
+                            <h1>Cấu trúc rẽ nhánh if ... else if ... else:</h1>
+                            <div style="background-color: #000000;color: #fff; padding: 10px; border-radius: 5px;">
+                                <pre>if (điều_kiện1) {
+    // Khối lệnh thực hiện nếu điều kiện 1 đúng
+} else if (điều_kiện2) {
+    // Khối lệnh thực hiện nếu điều kiện 2 đúng
+} else {
+    // Khối lệnh thực hiện nếu tất cả các điều kiện trên đều sai
+}</pre>
+                            </div>
+                            <br><b>Flowchart của cấu trúc If ... else if ... else trong C:</b>
+                            <div class="img-center">
+                                <img style="max-height: 500px;" src="image_tuan2/If-else_flowchart.png"
+                                    alt="Hình If ... else if ... else trong C">
+                                <div class="note">(Flowchart If ... else if ... else trong C)</div>
+                            </div>
+                            <br><b style="color: red;">LƯU Ý:</b>
+                            <br>- Nếu điều kiện 1 là <b>True</b>, khối lệnh bên trong <code>if</code> sẽ được thực hiện.
+                            <br>- Nếu điều kiện 1 là <b>False</b>, chương trình sẽ kiểm tra điều kiện 2.
+                            <br>- Nếu điều kiện 2 là <b>True</b>, khối lệnh bên trong <code>else if</code> sẽ được
+                            thực hiện.
+                            <br>- Nếu điều kiện 2 là <b>False</b>, khối lệnh bên trong <code>else</code> sẽ được thực
+                            hiện.
+                            <br>- Ghép nối nhiều <code>else if</code> để kiểm tra nhiều điều kiện khác nhau.
+                            <br>- Nếu không có khối lệnh nào, chương trình <b style="font-weight: bolder; color: red;">
+                                sẽ tiếp tục thực hiện các câu lệnh sau.</b>
+                            <br>- Nếu có nhiều câu lệnh, chúng sẽ được đặt trong dấu ngoặc nhọn `{}`.
+                            <br>- Nếu không có dấu ngoặc nhọn, chỉ câu lệnh đầu tiên sau <code>if</code> hoặc
+                            <code>else if</code> hoặc <code>else</code> sẽ được thực hiện.
+
+                            <br><br><b>Ví dụ:</b>
+                            <div class="img-center">
+                                <img src="image_tuan2/If_Else_CodeTrueFalse_Noted.png"
+                                    alt="Ví dụ If ... else if ... else trong C">
+                                <div class="note">(Ví dụ If ... else if ... else trong C) <br>Bên trái là <b>True</b>;
+                                    Bên phải là <b>False</b></div>
+                            </div>
+                            <div class="img-center">
+                                <img src="image_tuan2/If_Else_CodeTrueFalse_KQ_Noted.png"
+                                    alt="KQ Ví dụ If ... else if ... else trong C">
+                                <div class="note">(Kết quả Ví dụ If ... else if ... else trong C) <br>Bên trái là
+                                    <b>True</b>; Bên phải là <b>False</b>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="star">
+                            <h1>Cấu trúc rẽ nhánh Switch case:</h1>
+                            <div style="background-color: #000000;color: #fff; padding: 10px; border-radius: 5px;">
+                                <pre>switch (biểu_thức) {
+    case biểu_thức1:
+        // Khối lệnh thực hiện nếu biểu thức 1 đúng
+        break;
+    case biểu_thức2:
+        // Khối lệnh thực hiện nếu biểu thức 2 đúng
+        break;
+    default:
+        // Khối lệnh thực hiện nếu tất cả các biểu thức trên đều sai
+}</pre>
+                            </div>
+                            <br><b>Flowchart của cấu trúc rẽ nhánh Switch case trong C:</b>
+                            <div class="img-center">
+                                <img style="max-height: 500px;" src="image_tuan2/SwitchCase_Flowchart.png"
+                                    alt="Hình rẽ nhánh Switch case trong C">
+                                <div class="note">(Flowchart rẽ nhánh Switch case trong C)</div>
+                            </div>
+                            <br><b style="color: red;">LƯU Ý:</b>
+                            <br>- Chương trình sẽ kiểm tra biểu thức trong <code>switch</code> với biểu thức trong
+                            <code>case</code>.
+                            <br>- Nếu biểu thức trong <code>switch</code> đúng với biểu thức trong <code>case</code>,
+                            khối
+                            lệnh bên trong <code>case</code> sẽ được thực hiện.
+                            <br>- Nếu biểu thức trong <code>switch</code> không đúng với biểu thức trong
+                            <code>case</code>,
+                            khối lệnh bên trong <code>default</code> sẽ được thực hiện.
+                            <br>- Sử dụng <code>break</code> để kết thúc khối lệnh của mỗi <code>case</code>.
+                            <br>- Nếu không có <code>break</code>, chương trình sẽ tiếp tục thực hiện các khối lệnh
+                            tiếp theo cho đến khi gặp <code>break</code> hoặc kết thúc <code>switch</code>.
+
+                            <br><br><b>Ví dụ:</b>
+                            <div class="img-center">
+                                <img src="image_tuan2/SwitchCase_Code.png" alt="Ví dụ Switch case trong C">
+                                <div class="note">(Ví dụ Switch case trong C) <br>Bên trái là <b>Case đầu</b>; Ở giữa
+                                    là <b>Case thứ 2</b>; Bên phải là <b>Default</b></div>
+                            </div>
+                            <div class="img-center">
+                                <img src="image_tuan2/SwitchCase_Code_KQ.png" alt="KQ Ví dụ Switch case trong C">
+                                <div class="note">(Kết quả Ví dụ Switch case trong C) <br>Bên trái là <b>Case đầu</b>;
+                                    Ở giữa là <b>Case thứ 2</b>; Bên phải là <b>Default</b></div>
+                            </div>
+                            <h1 style="color: red; font-weight: bolder;">LƯU Ý:</h1>
+                            <div style="background-color: yellow; color: #ff943c; padding: 10px; border-radius: 5px;">
+                                PHẢI sử dụng <code>break</code> trong mỗi <code>case</code> để tránh việc chương trình
+                                tiếp tục thực hiện các <code>case</code> sau đó.
+                                <br> Nếu không sử dụng <code>break</code>, chương trình sẽ tiếp tục thực hiện các khối
+                                lệnh
+                                của các <code>case</code> tiếp theo cho đến khi gặp <code>break</code> hoặc kết thúc
+                                <code>switch</code>.
+                                <br> Điều này có thể dẫn đến kết quả không mong muốn nếu không được kiểm soát.
+                                <br> Vì vậy, hãy chắc chắn rằng mỗi <code>case</code> đều có <code>break</code> để đảm
+                                bảo
+                                rằng chương trình chỉ thực hiện khối lệnh của <code>case</code> mà nó khớp với biểu thức
+                                trong <code>switch</code>.
+                            </div>
+                            <div class="img-center">
+                                <img src="image_tuan2/SwitchCase_Code_QuenBreak.png"
+                                    alt="Lưu ý khi sử dụng Switch case trong C">
+                                <div class="note">(Lưu ý khi quên break Switch case trong C)</div>
+                                Switch case
+                            </div>
+                            <div class="img-center">
+                                <img src="image_tuan2/SwitchCase_Code_QuenBreak_KQ.png"
+                                    alt="KQ Lưu ý khi sử dụng Switch case trong C">
+                                <div class="note">(Kết quả Lưu ý khi quên break Switch case trong C)</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="minus">- Cấu trúc lặp</div>
+                <div class="hidden">
+                    <div class="star">
+                        <h1>Giới thiệu vòng lặp trong C</h1>
+                        Vòng lặp là một cấu trúc điều khiển cho phép thực hiện một khối lệnh nhiều lần dựa trên
+                        một điều kiện nhất định.
+                        <br>Nếu không dùng vòng lặp, bạn sẽ phải viết lại cùng một đoạn mã nhiều lần, điều này không
+                        chỉ làm
+                        tăng kích thước mã nguồn mà còn làm cho việc bảo trì trở nên khó khăn hơn
+                        <br>Vòng lặp giúp giảm thiểu việc lặp lại mã nguồn, làm cho chương trình ngắn gọn và dễ bảo
+                        trì hơn.
+                        <br>Trong C, có ba loại vòng lặp chính: <code>for</code>, <code>while</code>
+                        và <code>do ... while</code>.
+                    </div>
+                    <div class="noidungminus">Vòng lặp for trong C</div>
+                    <div class="hidden">
+                        <div class="star">
+                            Vòng lặp <code>for</code> sử Dùng khi bạn <b>biết trước số lần lặp.</b>
+                            <br><b>Cấu trúc vòng lặp for:</b>
+                            <div style="background-color: #000000;color: #fff; padding: 10px; border-radius: 5px;">
+                                <pre>//Đối với code C thì phải khai báo giá trị so sánh trước
+
+for (khởi_tạo; điều_kiện; cập_nhật) {
+    // Khối lệnh thực hiện trong mỗi lần lặp
+}</pre>
+                            </div>
+                            <br><b>Flowchart của vòng lặp For trong C:</b>
+                            <div class="img-center">
+                                <img style="max-height: 500px;" src="image_tuan2/For_flowchart.png"
+                                    alt="Hình vòng lặp For trong C">
+                                <div class="note">(Flowchart vòng lặp For trong C)</div>
+                            </div>
+                            <br><b style="color: red;">LƯU Ý:</b>
+                            <br>- <b style="color: red;">Đối với code C </b> thì phải <b>khai báo </b> biến lặp ban
+                            đầu <b style="color: red;">TRƯỚC KHI SỬ DỤNG</b> trong <code>for</code> (Tham khảo Ví
+                            Dụ)
+                            <br>- Vòng lặp <code>for</code> bao gồm ba phần:
+                            <br> 1. <b>Khởi tạo</b>: Thiết lập biến lặp ban đầu.
+                            <br> 2. <b>Điều kiện</b>: Kiểm tra điều kiện.
+                            <br> 3. <b>Cập nhật</b>: Cập nhật giá trị.
+                            <br>- Vòng lặp sẽ tiếp tục lặp lại cho đến khi điều kiện <b>sai</b>.
+                            <br>- Nếu <b>không có</b> điều kiện sai hoặc không có điều kiện, vòng lặp sẽ <b>lặp vô
+                                hạn</b>.
+                            <br><br><b>Ví dụ:</b>
+                            <div class="img-center
+">
+                                <img src="image_tuan2/For_Code.png" alt="Ví dụ vòng lặp For trong C">
+                                <div class="note">(Ví dụ vòng lặp For trong C)</div>
+                            </div>
+                            <div class="img-center
+">
+                                <img src="image_tuan2/For_Code_KQ.png" alt="KQ Ví dụ vòng lặp For trong C">
+                                <div class="note">(Kết quả Ví dụ vòng lặp For trong C)</div>
+                            </div>
+                            <h1 style="color: red; font-weight: bolder;">LƯU Ý:</h1>
+                            <div style="background-color: yellow; color: #ff943c; padding: 10px; border-radius: 5px;">
+                                - <b style="color: royalblue;">Trong code C </b>Nếu bạn <b>không khai báo</b> biến
+                                lặp trước khi sử dụng trong vòng lặp <code>for</code>, chương trình sẽ báo lỗi.(Xem
+                                bên dưới)
+                                <br>- Nếu bạn thay <code>;</code> bằng <code>,</code> trong phần khởi tạo, chương
+                                trình sẽ báo lỗi.(như hình bên dưới)
+                                <br>- Sử dụng đủ <code>;</code> trong phần khởi tạo, điều kiện và cập nhật của vòng
+                                lặp <code>for</code>. <b>Nếu DƯ <code>;</code> sau for </b> thì vòng lặp for có cấu
+                                trúc rỗng.(Xem bên dưới)
+                                <br>- Sử dụng đúng toán tử so sánh <code>==</code> thay vì <code>=</code> trong điều
+                                kiện vòng lặp, chương trình sẽ <b>lặp vô tận</b>.(xem bên dưới)
+                            </div>
+                            <div class="img-center">
+                                <img src="image_tuan2/For_SaiKhaiBao_Saidauphay.png"
+                                    alt="Sai dấu phẩy trong vòng lặp For trong C và không khai báo biến lặp">
+                                <div class="note">([Màu đỏ] Không khai báo biến lặp trước <code>for</code>;<br>[Màu
+                                    vàng]Dùng <code>,</code> thay <code>;</code> )</div>
+                            </div>
+                            <div class="img-center">
+                                <img src="image_tuan2/For_Saidaubang_Dudauchamphay.png"
+                                    alt="Sai dấu bằng trong vòng lặp For trong C và dư chấm phẩy">
+                                <div class="note">([Màu
+                                    vàng]Dùng <code>=</code> thay vì <code>==</code>;<br>[Màu đỏ] Dư <code>;</code>
+                                    sau <code>for</code>)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="noidungminus">Vòng lặp while trong C</div>
+                    <div class="hidden">
+                        <div class="star">
+                            Vòng lặp <code>while</code> sử dụng khi bạn <b>không biết trước số lần lặp.</b>
+                            <br> <b>Cấu trúc vòng lặp while:</b>
+                            <div style="background-color: #000000;color: #fff; padding: 10px; border-radius: 5px;">
+                                <pre>while (điều_kiện) {
+    // Khối lệnh thực hiện trong vòng lặp
+}</pre>
+                            </div>
+                            <br><b>Flowchart của vòng lặp While trong C:</b>
+                            <div class="img-center">
+                                <img style="max-height: 500px;" src="image_tuan2/While_flowchat.png"
+                                    alt="Hình vòng lặp While trong C">
+                                <div class="note">(Flowchart vòng lặp While trong C)</div>
+                            </div>
+                            <br><b style="color: red;">LƯU Ý:</b>
+                            <br>- Vòng lặp <code>while</code> sẽ kiểm tra điều kiện <b style="color: red;">TRƯỚC KHI</b>
+                            thực hiện khối lệnh.
+                            <br>- Vòng lặp <code>while</code> sẽ lặp lại khối lệnh cho đến khi điều kiện sai.
+                            <br>- Nếu điều kiện là <b>True</b>, khối lệnh bên trong sẽ được thực hiện.
+                            <br>- Nếu điều kiện là <b>False</b>, vòng lặp sẽ kết thúc và chương trình sẽ tiếp tục
+                            thực hiện các câu lệnh sau vòng lặp.
+                            <br><br><b>Ví dụ:</b>
+                            <div class="img-center">
+                                <img src="image_tuan2/While_code.png" alt="Ví dụ vòng lặp While trong C">
+                                <div class="note">(Ví dụ vòng lặp While trong C)</div>
+                            </div>
+                            <div class="img-center">
+                                <img src="image_tuan2/While_code_KQ.png" alt="KQ Ví dụ vòng lặp While trong C">
+                                <div class="note">(Kết quả Ví dụ vòng lặp While trong C)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="noidungminus">Vòng lặp do ... while trong C</div>
+                    <div class="hidden">
+                        <div class="star">
+                            Vòng lặp <code>do ... while</code> đảm bảo rằng khối lệnh sẽ được <b>thực hiện <b
+                                    style=" color: red;"> ít nhất một lần </b></b>,
+                            sau đó kiểm tra điều kiện.
+                            <br><b>Cấu trúc vòng lặp do ... while:</b>
+                            <div style="background-color: #000000;color: #fff; padding: 10px; border-radius: 5px;">
+                                <pre>do {
+    // Khối lệnh thực hiện trong vòng lặp
+} while (điều_kiện);</pre>
+                            </div>
+                            <br><b>Flowchart của vòng lặp do ... while trong C:</b>
+                            <div class="img-center">
+                                <img style="max-height: 500px;" src="image_tuan2/DoWhile_flowchart.png"
+                                    alt="Hình vòng lặp do ... while trong C">
+                                <div class="note">(Flowchart vòng lặp do ... while trong C)</div>
+                            </div>
+                            <br><b style="color: red;">LƯU Ý:</b>
+                            <br>- Vòng lặp <code>do ... while</code> sẽ kiểm tra điều kiện <b style="color: red;">SAU
+                                KHI</b>
+                            thực hiện khối lệnh.
+                            <br>- Vòng lặp <code>do ... while</code> sẽ lặp lại khối lệnh cho đến khi điều kiện sai.
+                            <br>- Nếu điều kiện là <b>True</b>, khối lệnh bên trong <code>do</code> sẽ được thực hiện.
+                            <br>- Nếu điều kiện là <b>False</b>, vòng lặp sẽ kết thúc và chương trình sẽ tiếp tục
+                            thực hiện các câu lệnh sau vòng lặp.
+                            <br><br><b>Ví dụ:</b>
+                            <div class="img-center">
+                                <img src="image_tuan2/DoWhile_Code.png" alt="Ví dụ vòng lặp do ... while trong C">
+                                <div class="note">(Ví dụ vòng lặp do ... while trong C)</div>
+                            </div>
+                            <div class="img-center">
+                                <img src="image_tuan2/DoWhile_Code_KQ.png" alt="KQ Ví dụ vòng lặp do ... while trong C">
+                                <div class="note">(Kết quả Ví dụ vòng lặp do ... while trong C)</div>
+                            </div>
+                            <h1 style="color: red;">Điểm khác biệt giữa vòng lặp <code>while</code> và vòng lặp
+                                <code>do ... while</code>
+                            </h1>
+                            <div>
+                                - Vòng lặp <code>while</code> kiểm tra điều kiện <b>TRƯỚC KHI</b> thực hiện khối lệnh,
+                                trong khi vòng lặp <code>do ... while</code> kiểm tra điều kiện <b>SAU KHI</b> thực hiện
+                                khối lệnh.
+                                <br>- Điều này có nghĩa là vòng lặp <code>do ... while</code> sẽ luôn thực hiện khối
+                                lệnh <b>ÍT NHẤT MỘT LẦN</b>,
+                                ngay cả khi điều kiện là <b>False</b>.
+                                <br>- Ngược lại, vòng lặp <code>while</code> <b>KHÔNG</b> thực hiện khối lệnh nếu điều
+                                kiện ban đầu là <b>False</b>.
+                            </div>
+                            <div class="img-center">
+                                <img src="image_tuan2/While_DoWhile_SoSanh_Code.png"
+                                    alt="Ví dụ vòng lặp While và vòng lặp do ... while trong C">
+                                <div class="note">(Vòng lặp <code>while</code>(Màu đỏ) <br> vòng lặp
+                                    <code>do ... while</code> trong C)
+                                </div>
+                            </div>
+                            <div class="img-center">
+                                <img src="image_tuan2/While_DoWhile_SoSanh_Code_KQ.png"
+                                    alt="KQ Ví dụ vòng lặp While và vòng lặp do ... while trong C">
+                                <div class="note">(Kết quả vòng lặp <code>while</code>(Màu đỏ) <br> vòng lặp
+                                    <code>do ... while</code> trong C)
+                                </div>
+                            </div>
+                            <div>
+                                <b>Giải thích</b>
+                                <br>- Trong ví dụ trên, vòng lặp <code>while</code> sẽ không thực hiện khối lệnh vì điều
+                                kiện ban đầu là <b>False</b> do đó in ra giá trị <code>iSo = 1</code>.
+                                <br>- Ngược lại, vòng lặp <code>do ... while</code> sẽ thực hiện khối lệnh <b>một
+                                    lần</b> trước khi kiểm tra điều kiện,
+                                do đó in ra giá trị <code>iSo = 2</code>.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Tuần 3 -->
+        <div id="week3" class="accordion">
+            <div class="plus">+ Tuần 3</div>
+            <div class="hidden">
+                <div class="minus">- Hàm (function) trong C</div>
+                <div class=" hidden">
+                    <div class="star">
+
+                        <h1> Khái niệm hàm trong C</h1>
+                        <b>Hàm (function)</b> là một khối mã lệnh được định nghĩa để thực hiện một nhiệm vụ cụ thể.
+                        <br>Hàm có tên gọi và có thể được gọi từ bất kỳ đâu trong chương trình.
+                        <br>Hàm giúp chia nhỏ chương trình thành các phần nhỏ hơn, dễ quản lý và bảo trì hơn.
+                        <br>Hàm có thể có hoặc không nhận đầu vào (tham số) và trả về giá trị (kết quả).
+                        <br> Trong C, hàm có thể
+                        được chia thành hai loại chính:
+
+                    </div>
+                    <div class="noidungminus">
+                        * Hàm từ thư viện có sẵn
+                    </div>
+                    <div class="hidden">
+                        <div class="star">
+                            <h1>Hàm thư viện có sẵn</h1>
+                            <b>Hàm thư viện có sẵn</b> là những hàm được định nghĩa trong các thư viện chuẩn của C, như
+                            <code>stdio.h</code>, <code>stdlib.h</code>, <code>math.h</code>, v.v.
+                            <br>Chúng cung cấp các lợi ích như
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp; - Thực hiện các tác vụ phổ biến như nhập/xuất, toán học, chuỗi,
+                            v.v.
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp; - Giúp tiết kiệm thời gian và công sức khi lập trình.
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp; - Cung cấp các hàm đã được kiểm tra và tối ưu hóa.
+                            <h1 class="truoctable">Các thư viện chuẩn thường dùng trong C</h1>
+                            <div class="hidden">
+                                <table>
+                                    <tr>
+                                        <th>Thư viện</th>
+                                        <th>Lý do sử dụng</th>
+                                    </tr>
+                                    <tr>
+                                        <td><b>stdio.h</b></td>
+                                        <td>Nhập xuất cơ bản: printf(), scanf(), getchar(), putchar()</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>stdlib.h</b></td>
+                                        <td>Các hàm tiện ích: cấp phát bộ nhớ (malloc, free), abs(), chuyển đổi chuỗi –
+                                            số
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>math.h</b></td>
+                                        <td>Hàm toán học: sqrt(), pow(), sin(), cos(), log()</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>string.h</b></td>
+                                        <td>Xử lý chuỗi: strlen(), strcpy(), strcat(), strcmp()</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>time.h</b></td>
+                                        <td>Làm việc với thời gian, ngày tháng: time(), clock(), difftime()</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>ctype.h</b></td>
+                                        <td>Xử lý ký tự: isdigit(), isalpha(), toupper(), tolower()</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <h1 class="truoctable">Các hàm thường dùng trong C</h1>
+                            <div class="hidden">
+                                <table>
+                                    <tr>
+                                        <th>Hàm</th>
+                                        <th>Thuộc thư viện</th>
+                                        <th>Chức năng</th>
+                                    </tr>
+                                    <!-- Nhập xuất -->
+                                    <tr>
+                                        <td>printf()</td>
+                                        <td>stdio.h</td>
+                                        <td>In dữ liệu ra màn hình</td>
+                                    </tr>
+                                    <tr>
+                                        <td>scanf()</td>
+                                        <td>stdio.h</td>
+                                        <td>Nhập dữ liệu từ bàn phím</td>
+                                    </tr>
+                                    <tr>
+                                        <td>getchar()</td>
+                                        <td>stdio.h</td>
+                                        <td>Đọc 1 ký tự từ bàn phím</td>
+                                    </tr>
+                                    <tr>
+                                        <td>putchar()</td>
+                                        <td>stdio.h</td>
+                                        <td>In 1 ký tự ra màn hình</td>
+                                    </tr>
+
+                                    <!-- Toán học -->
+                                    <tr>
+                                        <td>abs(x)</td>
+                                        <td>stdlib.h</td>
+                                        <td>Giá trị tuyệt đối của số nguyên x</td>
+                                    </tr>
+                                    <tr>
+                                        <td>fabs(x)</td>
+                                        <td>math.h</td>
+                                        <td>Giá trị tuyệt đối của số thực x</td>
+                                    </tr>
+                                    <tr>
+                                        <td>sqrt(x)</td>
+                                        <td>math.h</td>
+                                        <td>Căn bậc hai của x</td>
+                                    </tr>
+                                    <tr>
+                                        <td>pow(x,y)</td>
+                                        <td>math.h</td>
+                                        <td>Tính x<sup>y</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td>exp(x)</td>
+                                        <td>math.h</td>
+                                        <td>Tính e<sup>x</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td>log(x)</td>
+                                        <td>math.h</td>
+                                        <td>Logarit tự nhiên (cơ số e)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>log10(x)</td>
+                                        <td>math.h</td>
+                                        <td>Logarit cơ số 10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>sin(x)</td>
+                                        <td>math.h</td>
+                                        <td>Tính sin(x) (radian)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>cos(x)</td>
+                                        <td>math.h</td>
+                                        <td>Tính cos(x) (radian)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>tan(x)</td>
+                                        <td>math.h</td>
+                                        <td>Tính tan(x) (radian)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ceil(x)</td>
+                                        <td>math.h</td>
+                                        <td>Làm tròn lên số nguyên gần nhất</td>
+                                    </tr>
+                                    <tr>
+                                        <td>floor(x)</td>
+                                        <td>math.h</td>
+                                        <td>Làm tròn xuống số nguyên gần nhất</td>
+                                    </tr>
+                                    <tr>
+                                        <td>fmod(x,y)</td>
+                                        <td>math.h</td>
+                                        <td>Lấy phần dư của phép chia x/y</td>
+                                    </tr>
+
+                                    <!-- Chuỗi -->
+                                    <tr>
+                                        <td>strlen(s)</td>
+                                        <td>string.h</td>
+                                        <td>Tính độ dài chuỗi</td>
+                                    </tr>
+                                    <tr>
+                                        <td>strcpy(s1,s2)</td>
+                                        <td>string.h</td>
+                                        <td>Sao chép chuỗi s2 vào s1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>strcat(s1,s2)</td>
+                                        <td>string.h</td>
+                                        <td>Nối chuỗi s2 vào cuối s1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>strcmp(s1,s2)</td>
+                                        <td>string.h</td>
+                                        <td>So sánh 2 chuỗi</td>
+                                    </tr>
+
+                                    <!-- Ký tự -->
+                                    <tr>
+                                        <td>isdigit(c)</td>
+                                        <td>ctype.h</td>
+                                        <td>Kiểm tra c có phải chữ số không</td>
+                                    </tr>
+                                    <tr>
+                                        <td>isalpha(c)</td>
+                                        <td>ctype.h</td>
+                                        <td>Kiểm tra c có phải ký tự chữ cái không</td>
+                                    </tr>
+                                    <tr>
+                                        <td>toupper(c)</td>
+                                        <td>ctype.h</td>
+                                        <td>Chuyển ký tự thường thành hoa</td>
+                                    </tr>
+                                    <tr>
+                                        <td>tolower(c)</td>
+                                        <td>ctype.h</td>
+                                        <td>Chuyển ký tự hoa thành thường</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="noidungminus">
+                        * Hàm do người dùng định nghĩa
+                    </div>
+                    <div class="hidden">
+                        <div class="star">
+                            <h1>Hàm do người dùng định nghĩa</h1>
+                            <b>Hàm do người dùng định nghĩa</b> là những hàm mà lập trình viên tự tạo ra để thực hiện
+                            các nhiệm vụ cụ thể trong chương trình của mình.
+                            <br>Chúng giúp tăng tính modular, tái sử dụng mã và dễ bảo trì.
+                            <br>Cú pháp định nghĩa hàm bao gồm:
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp; - Kiểu trả về (return type): kiểu dữ liệu mà hàm trả về (ví dụ:
+                            int, float, void).
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp; - Tên hàm (function name): tên gọi của hàm.
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp; - Tham số (parameters): danh sách các biến đầu vào mà hàm
+                            nhận (có thể có hoặc không).<b>[Xem thêm phần truyền tham số ohía dưới]</b>
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp; - Thân hàm (function body): khối mã lệnh thực hiện nhiệm vụ
+                            của hàm.
+                            <h1 class="truoctable">Cấu trúc tổng quát của hàm trong C</h1>
+                            <div class="hidden">
+                                <div style="background-color: #000000;color: #fff; padding: 10px; border-radius: 5px;">
+                                    <pre>return_type function_name(parameter_list) { 
+    // Thân hàm
+    return value; // Trả về giá trị <b style="color: red">(NẾU CÓ)</b>
+}</pre>
+                                </div>
+                                <table>
+                                    <tr>
+                                        <th>Thành phần</th>
+                                        <th>Ý nghĩa</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>return_type</code></td>
+                                        <td>Kiểu dữ liệu trả về (int, float, char, …). Nếu không trả về thì dùng
+                                            <code>void</code>.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>function_name</code></td>
+                                        <td>Tên hàm, phải tuân thủ quy tắc đặt tên, nên rõ nghĩa để dễ bảo trì.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>parameter_list</code></td>
+                                        <td>Danh sách tham số, có thể không có, một hoặc nhiều tham số.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Thân hàm</td>
+                                        <td>Chứa các câu lệnh thực thi nhiệm vụ.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>return</code></td>
+                                        <td>Trả kết quả về nơi gọi (không dùng nếu <code>return_type</code> là
+                                            <code>void</code>).
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br><b>Ví dụ 1:</b>
+                                <div class="img-center">
+                                    <img src="image_tuan3/CautrucCode_code_Noted.png" alt="Cấu trúc hàm trong C">
+                                    <div class="note">([MÀU XANH LÁ] Không sử dụng hàm <br>[MÀU CAM] Sử dụng hàm )</div>
+                                </div>
+                                <div class="img-center"><img src="image_tuan3/CautrucCode_KQ.png"
+                                        alt="KQ Cấu trúc hàm trong C">
+                                    <div class="note">(Kết quả)</div>
+                                </div>
+                                <div> <b>Giải thích:</b>
+                                    <br> &nbsp;&nbsp;Khi hàm InLoiChao được gọi thì chương trình sẽ nhảy đến định nghĩa
+                                    hàm
+                                    này, thực
+                                    hiện các câu lệnh trong thân hàm, sau đó quay lại vị trí gọi hàm và tiếp tục thực
+                                    hiện các câu lệnh tiếp theo.
+                                    <br> &nbsp;&nbsp;Hàm InLoiChao không có tham số và không trả về giá trị (kiểu trả về
+                                    là
+                                    void).
+                                    <br>&nbsp;&nbsp;<b>Điểm nổi bật sử dụng hàm và không sử dụng hàm:</b>
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp; - Mã lệnh trong hàm có thể được tái sử dụng nhiều lần
+                                    mà không cần viết lại thân hàm nhiều lần.
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp; - Chương trình rõ ràng, dễ đọc và dễ hiểu hơn.
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp; - Khi cần thay đổi, chỉ cần sửa trong thân hàm mà không
+                                    cần sửa ở nhiều nơi.
+                                </div>
+                                <br><b>Ví dụ 2:</b>
+                                <div class="img-center">
+                                    <img src="image_tuan3/CautrucCode_VD2_code.png" alt="Cấu trúc hàm trong C">
+                                    <div class="note">(Sử dụng hàm có return)</div>
+                                </div>
+                                <div> <b>Giải thích:</b>
+                                    <br> &nbsp;&nbsp;Khi hàm <code>Tong2So</code> được gọi thì chương trình sẽ nhảy đến
+                                    định nghĩa
+                                    hàm
+                                    này, thực
+                                    hiện các câu lệnh trong thân hàm, sau đó quay lại vị trí gọi hàm và tiếp tục thực
+                                    hiện
+                                    các câu lệnh tiếp theo.
+                                    <br> &nbsp;&nbsp;Hàm <code>Tong2So</code> có hai tham số đầu vào <code>a</code> và
+                                    <code>b</code> và trả về giá trị tổng của hai số (kiểu trả về là <code>int</code>).
+                                    <br>&nbsp;&nbsp;<b>Điểm nổi bật sử dụng hàm có tham số và trả về:</b>
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp; - Hàm có thể nhận dữ liệu đầu vào để xử lý.
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp; - Hàm có thể trả về kết quả sau khi xử lý.
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp; - Tăng tính modular và tái sử dụng mã.
+                                    <br><b style="color: red;"> LƯU Ý: </b>
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp; - Hàm phải được định nghĩa trước khi gọi hoặc khai báo
+                                    nguyên mẫu hàm (function prototype) trước khi gọi.
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp; - Tên hàm phải tuân thủ quy tắc đặt tên và không trùng
+                                    với từ khóa
+                                    của C.
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp; - Tham số trong hàm có thể có kiểu dữ liệu khác nhau.
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp; <b>- Tên tham số đưa vào hàm khi định nghĩa có thể khác
+                                        với tên biến
+                                        khi gọi hàm.</b> <b style="color: red;"> [Cần nắm rõ có thể dò Goole]</b>
+
+                                </div>
+                                <h1 class="truoctable">Truyền tham số</h1>
+                                <div class="hidden">
+                                    <b>Truyền tham số (parameters passing)</b> là cách để cung cấp dữ liệu đầu vào cho
+                                    hàm khi gọi nó.
+                                    <br>Trong C, có hai cách chính để truyền tham số cho hàm:
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp; - Truyền theo giá trị (pass by value)
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp; - Truyền theo tham chiếu (pass by reference)
+                                    <table>
+                                        <tr>
+                                            <th>Cơ chế</th>
+                                            <th>Ý nghĩa</th>
+                                            <th>Cấu trúc/Cú pháp minh họa</th>
+                                            <th>Ảnh hưởng đến biến gốc</th>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Call by Value<br>(Truyền tham trị)</b></td>
+                                            <td>
+                                                Giá trị của đối số được <b>sao chép</b> vào tham số.
+                                                Thay đổi tham số trong hàm không làm thay đổi biến gốc.
+                                            </td>
+                                            <td>
+                                                <code>int add(int x, int y);<br>add(a, b);</code>
+                                            </td>
+                                            <td>❌ Không thay đổi</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Pass by Address<br>(Truyền địa chỉ bằng con trỏ)</b></td>
+                                            <td>
+                                                Địa chỉ của biến được truyền vào hàm.
+                                                Tham số trong hàm là <b>con trỏ</b>.
+                                                Thay đổi trên con trỏ sẽ tác động trực tiếp đến biến gốc.
+                                            </td>
+                                            <td>
+                                                <code>void swap(int *x, int *y);<br>swap(&a, &b);</code>
+                                            </td>
+                                            <td>✅ Có thể thay đổi</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Mảng</b></td>
+                                            <td>
+                                                Khi truyền mảng, thực chất là truyền <b>địa chỉ phần tử đầu tiên</b>.
+                                                Do đó, thao tác trong hàm ảnh hưởng đến mảng gốc.
+                                            </td>
+                                            <td>
+                                                <code>void printArr(int arr[]);<br>printArr(a);</code>
+                                            </td>
+                                            <td>✅ Có thể thay đổi</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Chuỗi (String)</b></td>
+                                            <td>
+                                                Chuỗi trong C là <b>mảng ký tự</b> kết thúc bằng <code>'\0'</code>.
+                                                Khi truyền chuỗi vào hàm, cũng truyền con trỏ → thay đổi chuỗi trong hàm
+                                                ảnh
+                                                hưởng chuỗi gốc.
+                                            </td>
+                                            <td>
+                                                <code>void printStr(char s[]);<br>printStr(str);</code>
+                                            </td>
+                                            <td>✅ Có thể thay đổi</td>
+                                        </tr>
+                                    </table>
+                                    <br><b>Ví dụ:</b>
+                                    <div class="img-center">
+                                        <img src="image_tuan3/ThamSovsThamTri_Code.png"
+                                            alt="Truyền tham số và tham trị trong C">
+                                        <div class="note">(Truyền tham số và tham trị trong C)</div>
+                                    </div>
+                                    <div class="img-center"><img src="image_tuan3/ThamSovsThamTri_KQ.png"
+                                            alt="KQ Truyền tham số và tham trị trong C">
+                                        <div class="note">(Kết quả)</div>
+                                    </div>
+                                    <h1 style="color: red;">Giải thích:</h1>
+                                    <ul>
+                                        <li>Truyền theo giá trị: <code>void tangTheoGiaTri(int x)</code></li>
+                                        <ul>
+                                            <li>Tham số <code>x</code> nhận giá trị của biến <code>a</code> do gọi hàm
+                                                <code>tangTheoGiaTri(a);</code>
+                                            </li>
+                                            <li>Giá trị của biến <code>a</code> được sao chép vào tham số
+                                                <code>x</code> = 5 (do <code>a = 5</code>).
+                                            </li>
+                                            <li>Tăng biến <code>x</code> trong hàm <code>tangTheoGiaTri</code> thì chỉ
+                                                có thay đổi <code>x</code> bên trong hàm.</li>
+                                            <li>Thay đổi <code>x</code> trong hàm <b style="color: red;">KHÔNG ẢNH
+                                                    HƯỞNG</b> đến biến
+                                                <code>a</code>
+                                                bên ngoài.
+                                            </li>
+                                            <li> => Kết quả in ra vẫn là 5.</li>
+                                        </ul>
+                                        <li>Truyền theo tham chiếu: <code>void tangTheoThamChieu(int *x)</code></li>
+                                        <ul>
+                                            <li>Tham số <code>x</code> nhận địa chỉ của biến <code>b</code> do gọi hàm
+                                                <code>tangTheoThamChieu(&b);</code>
+                                            </li>
+                                            <li>Tăng giá trị tại địa chỉ mà con trỏ <code>x</code> trỏ đến (tức là biến
+                                                <code>b</code>) trong hàm
+                                                <code>tangTheoThamChieu</code>.
+                                            </li>
+                                            <li>Thay đổi <code>x</code> trong hàm <b style="color: red;"> ẢNH HƯỞNG</b>
+                                                đến biến
+                                                <code>b</code>
+                                                bên ngoài.
+                                            </li>
+                                            <li> => Kết quả in ra là 6 (do <code>b</code> đã được tăng lên 1).</li>
+                                        </ul>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="minus">- Con trỏ (pointer) trong C</div>
+                <div class="hidden">
+                    <div class="star">
+                        <h1>Khái niệm Con trỏ trong C</h1>
+                        <b>Con trỏ</b> (pointer) là một con trỏ sử dụng để lưu trữ địa chỉ bộ nhớ của một biến khác.
+                        <br>Con trỏ (pointer) giúp truy cập và thao tác trực tiếp với bộ nhớ, cho phép quản lý
+                        động, tối ưu hóa hiệu suất và xây dựng các cấu trúc dữ liệu phức tạp.
+                        <br>Cú pháp khai báo con trỏ (pointer):
+                        <div style="background-color: #000000;color: #fff; padding: 10px; border-radius: 5px;">
+                            <pre>data_type *pointer_name;</pre>
+                            <pre>int *p; // p là con trỏ đến biến kiểu int</pre>
+                            <pre>char *s; // s là con trỏ đến biến kiểu char</pre>
+                            <pre>float *f; // f là con trỏ đến biến kiểu float</pre>
+                        </div>
+                        <b>Ví dụ:</b>
+                        <div class="img-center">
+                            <img src="image_tuan3/ConTro_Code_KQ.png" alt="Con trỏ trong C">
+                            <div class="note">(Con trỏ trong C)</div>
+                        </div>
+                        <b style="color: red;"> Giải thích </b>
+                        <ul>
+                            <li><code>int *p;</code> : <code>p</code> là con trỏ đến biến kiểu int.</li>
+                            <li><code>p = &a;</code>Giá trị của <code>p</code> là địa chỉ của biến <code>a</code>.</li>
+                            <li>Để lấy giá trị tại địa chỉ mà con trỏ trỏ đến thì dùng <code>*p</code> </li>
+                            <li>Thay đổi giá trị tại địa chỉ mà con trỏ trỏ đến sẽ làm thay đổi giá trị của biến
+                                gốc.</li>
+                            <li>Con trỏ rất hữu ích trong việc truyền tham số theo tham chiếu cho hàm.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Tuần 4-->
+        <div id="week4" class="accordion">
+            <div class="plus">+ Tuần 4</div>
+            <div class="hidden">
+                <div class="minus">- Mảng (Array) trong C</div>
+                <div class="hidden">
+                    <div class="star">
+                        <h1>Khái niệm Mảng trong C</h1>
+                        <b>Mảng (Array)</b> là một cấu trúc dữ liệu dùng để lưu trữ nhiều giá trị cùng kiểu trong
+                        một biến duy nhất.
+                        <br>Mảng giúp tổ chức và quản lý dữ liệu hiệu quả hơn, đặc biệt khi làm việc với tập hợp lớn
+                        các giá trị.
+                        <h1>Cú pháp khai báo mảng:</h1>
+                        <div style="background-color: #000000;color: #fff; padding: 10px; border-radius: 5px;">
+                            <pre>data_type array_name[array_size];</pre>
+                            <pre>int arr[10]; // arr là mảng gồm 10 phần tử kiểu int</pre>
+                            <pre>float scores[5]; // scores là mảng gồm 5 phần tử kiểu float</pre>
+                            <pre>char name[20]; // name là mảng gồm 20 phần tử kiểu char</pre>
+                        </div>
+                        <h1>Khởi tạo mảng:</h1>
+                        Mảng có thể được khởi tạo khi khai báo hoặc sau đó.
+                        <div style="background-color: #000000;color: #fff; padding: 10px; border-radius: 5px;">
+                            <pre>//Cách 1:</pre>
+                            <pre>int arr[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};</pre>
+                            <pre>//Cách 2:</pre>
+                            <pre>int arr[10];</pre>
+                            <pre>arr[0] = 1;</pre>
+                            <pre>arr[1] = 2;</pre>
+                            <pre>arr[2] = 3;</pre>
+                            <pre>arr[3] = 4;</pre>
+                            <pre>arr[4] = 5;</pre>
+                            <pre>arr[5] = 6;</pre>
+                            <pre>arr[6] = 7;</pre>
+                            <pre>arr[7] = 8;</pre>
+                            <pre>arr[8] = 9;</pre>
+                            <pre>arr[9] = 10;</pre>
+                        </div>
+                        <h1>Sử dụng mảng:</h1>
+                        Các phần tử trong mảng được truy cập thông qua chỉ số (index), <b style="color: orange;">BẮT ĐẦU
+                            TỪ 0</b>.
+                        <div style="background-color: #000000;color: #fff; padding: 10px; border-radius: 5px;">
+                            <pre>int firstElement = arr[0]; // Lấy phần tử đầu tiên<b style="color: orangered;"> (thứ nhất)</b> nên <b style="color: orange;"> index = 0</b></pre>
+                            <pre>arr[1] = 20; // Gán giá trị 20 cho phần tử thứ <b style="color: orangered;">hai</b>nên <b style="color: orange;"> index = 1</b></pre>
+                        </div>
+                        <b>Ví dụ:</b>
+                        <div class="img-center">
+                            <img src="image_tuan4/VDMang_CODE_KQ.png" alt="Xuất Mảng trong C">
+                            <div class="note">(Xuất Mảng trong C)</div>
+                        </div>
+                        <div class="img-center">
+                            <img src="image_tuan4/VDNhapMang_CODE_KQ.png" alt="Nhập Mảng trong C">
+                            <div class="note">(Nhập Mảng trong C)</div>
+                        </div>
+                        <h1>LƯU Ý:</h1>
+                        <ul>
+                            <li>Mảng có kích thước cố định, không thể thay đổi sau khi khai báo.</li>
+                            <li>Truy cập ngoài phạm vi mảng (out of bounds) dẫn đến hành vi không xác định.</li>
+                            <li>Mảng có thể là một chiều hoặc đa chiều (ví dụ: mảng 2D).</li>
+                            <li>Mảng có thể được sử dụng kết hợp với con trỏ để thao tác nâng cao.</li>
+                        </ul>
+                        <b>Ví dụ:</b>
+                        <div class="img-center">
+                            <img src="image_tuan4/VDSai_CODE_KQ.png" alt="Ví dụ mảng sai trong C">
+                            <div class="note">(Truy xuất ngoài phạm vi trong C)</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Tuần 5-->
+    <div id="week5" class="accordion">
+      <div class="plus">+ Tuần 5</div>
+      <div class="hidden">
+        <div class="minus">- Xâu ký tự</div>
+        <div class="hidden">
+          <div class="noidungminus">* Khai báo và khởi tạo chuỗi</div>
+          <div class="hidden">
+            <div class="star">
+              <h1>Định Nghĩa:</h1>
+              <ul>
+                <li>
+                  <b>Chuỗi (String)</b> là một dãy các ký tự được lưu trữ
+                  <b>liên tiếp</b> trong bộ nhớ.
+                </li>
+                <li>
+                  Mỗi ký tự trong chuỗi có kích thước bằng <b>1 byte</b>
+                </li>
+                <li>
+                  Trong C, chuỗi được biểu diễn dưới dạng mảng các ký tự kết
+                  thúc bằng ký tự null ('\0').
+                </li>
+                <li>
+                  Chuỗi có thể chứa chữ cái, số, ký tự đặc biệt và khoảng
+                  trắng.
+                </li>
+              </ul>
+              <h1>Cách Khai Báo Chuỗi:</h1>
+              <ul>
+                <li><b>Cách 1:</b> Chỉ khai báo mảng ký tự.</li>
+                <div style="
+                      background-color: #000000;
+                      color: #fff;
+                      padding: 10px;
+                      border-radius: 5px;
+                    ">
+                  <pre><b>char</b> str_name[<b style="color: orangered;">size_of_str</b>]; // Bắt buộc <b style="color: red;"> PHẢI CÓ </b> kích thước <b style="color: orangered;">size_of_str</b></pre>
+                  <pre>
+char strdai20[20]; // Khai báo mảng ký tự tên strdai20 có kích thước 20 ký tự <b style="color: red;">CÓ TÍNH "\0" </b>(tương đương 20 bytes)</pre>
+                </div>
+                <li>
+                  <b>Cách 2:</b> Khai báo và khởi tạo chuỗi cùng lúc
+                  <b>có khai báo kích thước</b>.
+                </li>
+                <div style="
+                      background-color: #000000;
+                      color: #fff;
+                      padding: 10px;
+                      border-radius: 5px;
+                    ">
+                  <pre>
+char c[50] = "abcd";  // Chuỗi được khởi tạo cùng lúc khai báo kích thước 50 ký tự</pre>
+                  <pre>
+char c[5] = {'a', 'b', 'c', 'd', '\0’}; // Chuỗi được khởi tạo cùng lúc khai báo kích thước 5 ký tự</pre>
+                </div>
+                <li>
+                  <b>Cách 3:</b> Khai báo và khởi tạo chuỗi cùng lúc
+                  <b>không khai báo kích thước</b>.
+                </li>
+                <div style="
+                      background-color: #000000;
+                      color: #fff;
+                      padding: 10px;
+                      border-radius: 5px;
+                    ">
+                  <pre>
+char str_name[] = "string_value"; // Kích thước mảng tự động bằng kích thước chuỗi</pre>
+                  <pre>
+char str_name[] = {'s', 't', 'r', 'i', 'n', 'g', '_', 'v', 'a', 'l', 'u', 'e', '\0'}; // Kích thước mảng tự động bằng kích thước chuỗi</pre>
+                </div>
+              </ul>
+
+              <h1>Lưu Ý:</h1>
+              <ul>
+                <li>
+                  Kích thước mảng ký tự phải đủ lớn để chứa chuỗi và ký tự
+                  null ('\0').
+                </li>
+                <li>
+                  Chuỗi trong C luôn kết thúc bằng ký tự null để đánh dấu kết
+                  thúc chuỗi.
+                </li>
+              </ul>
+              <h1 style="color: red;">CHÚ Ý</h1>
+              <ul>
+                <li>
+                  Sau khai báo chuỗi, không thể gán trực tiếp cho chuỗi.
+                </li>
+                <li>
+                  Ví dụ: <br />
+                  <div style="
+                        background-color: #000000;
+                        color: #fff;
+                        padding: 10px;
+                        border-radius: 5px;
+                      ">
+                    <pre>char str[5];
+                        </pre>
+                    <pre>str = "abcd"; // Sai vì <b>không thể gán trực tiếp cho chuỗi</b>
+                        </pre>
+                  </div>
+            </div>
+          </div>
+          <div class="noidungminus">* Nhập xuất chuỗi</div>
+          <div class="hidden">
+            <div class="star">
+              <h1 class="truoctable">Xuất chuỗi:</h1>
+              <div class="hidden">
+                <ul>
+                  <li>
+                    Sử dụng hàm <b>printf()</b> với định dạng <b>%s</b> để
+                    xuất chuỗi.
+                  </li>
+                  <div style="
+                      background-color: #000000;
+                      color: #fff;
+                      padding: 10px;
+                      border-radius: 5px;
+                    ">
+                    <pre>char str[] = "Hello, World!";</pre>
+                    <pre>printf("%s\n", str); // Xuất chuỗi str</pre>
+                  </div>
+                  <li>
+                    Sử dụng hàm <b>puts()</b> để
+                    xuất chuỗi.
+                  </li>
+                  <div style="
+                      background-color: #000000;
+                      color: #fff;
+                      padding: 10px;
+                      border-radius: 5px;
+                    ">
+                    <pre>char str[] = "Hello, World!";</pre>
+                    <pre>puts(str); // Xuất chuỗi str</pre>
+                  </div>
+                </ul>
+                <div class="img-center">
+                  <img src="image_tuan5/XuatChuoi_Code_KQ.png" alt="Xuất Chuỗi trong C" />
+                  <div class="note">(Xuất Chuỗi trong C)</div>
+                </div>
+              </div>
+              <h1 class="truoctable">Nhập chuỗi:</h1>
+              <div class="hidden">
+                <ul>
+                  <li>
+                    Sử dụng hàm <b>scanf()</b> với định dạng <b>%s</b> để nhập
+                    chuỗi <b>(không có khoảng trắng)</b>.
+                  </li>
+                  <div style="
+                      background-color: #000000;
+                      color: #fff;
+                      padding: 10px;
+                      border-radius: 5px;
+                    ">
+                    <pre>char str[100];</pre>
+                    <pre>scanf("%s", str); // Nhập chuỗi vào str (không có khoảng trắng)</pre>
+                  </div>
+                  <li>
+                    Sử dụng hàm <b>fgets()</b> để nhập chuỗi <b>(có khoảng trắng)</b>.
+                  </li>
+                  <div style="
+                      background-color: #000000;
+                      color: #fff;
+                      padding: 10px;
+                      border-radius: 5px;
+                    ">
+                    <pre>char str[100];</pre>
+                    <pre>fgets(str, sizeof(str), stdin); // Nhập chuỗi vào str (có khoảng trắng)</pre>
+                  </div>
+                </ul>
+                <div class="img-center">
+                  <img src="image_tuan5/NhapChuoi_Code_KQ.png" alt="Nhập Chuỗi trong C" />
+                  <div class="note">(Nhập Chuỗi trong C)</div>
+                </div>
+                <b>Cách không nên dùng để nhập chuỗi và đã bị loại khỏi chuẩn C sử dụng hàm <b>gets()</b>:</b>
+                <ul>
+                  <li>
+                    Hàm <b>gets()</b> để nhập chuỗi <b>(có khoảng trắng)</b>,
+                    nhưng không an toàn vì không kiểm soát kích thước bộ đệm.
+                  </li>
+                </ul>
+                <div style="
+                      background-color: #000000;
+                      color: #fff;
+                      padding: 10px;
+                      border-radius: 5px;
+                    ">
+                  <pre>char str[100];</pre>
+                  <pre>gets(str); // Nhập chuỗi vào str (có khoảng trắng) <b style="color: red;">(KHÔNG NÊN DÙNG)</b></pre>
+                </div>
+                <div class="img-center">
+                  <img src="image_tuan5/Gets_Code_KQ.png" alt="gets trong C" />
+                  <div class="note">(gets trong C)</div>
+                </div>
+                <b>Giải thích:</b>
+                <code>char name[2]; </code> chỉ có thể chứa 1 ký tự + '\0', nhưng
+                <code>gets(name);</code> có thể nhập nhiều ký tự hơn, dẫn đến tràn bộ nhớ ký tự.
+              </div>
+              <h1 class="truoctable">Lỗi thường gặp khi nhập chuỗi</h1>
+              <div class="hidden">
+                <ul>
+                  <li>Khi nhập chuỗi ký tự sau <code>scanf</code> sẽ có chứa ký tự <code>\n</code></li>
+                  <li>=> Chuỗi ký tự nhận <code>\n</code> và bỏ qua bước nhập từ bàn phím của chương trình</li>
+                  <li>Giải pháp: Thêm một dòng <code>getchar();</code> sau dòng <code>scanf</code></li>
+                  <div style="background-color: #000000; color: #fff; padding: 10px; border-radius: 5px;">
+                    <pre>int age;</pre>
+                    <pre>char name[50];</pre>
+                    <pre>scanf("%d", &age);</pre>
+                    <pre><b style="color: orange;">getchar(); // Loại bỏ ký tự '\n' còn sót lại trong bộ đệm</b></pre>
+                    <pre>fgets(name, sizeof(name), stdin); // Nhập chuỗi có khoảng trắng</pre>
+                  </div>
+                  <li>Giải pháp: Thêm một dòng <code>fflush(stdin);</code> sau dòng <code>scanf</code></li>
+                  <div style="background-color: #000000; color: #fff; padding: 10px; border-radius: 5px;">
+                    <pre>int age;</pre>
+                    <pre>char name[50];</pre>
+                    <pre>scanf("%d", &age);</pre>
+                    <pre><b style="color: orange;">fflush(stdin); // Làm trống bộ đệm đầu vào</b></pre>
+                    <pre>fgets(name, sizeof(name), stdin); // Nhập chuỗi có khoảng trắng</pre>
+                  </div>
+                  <li>Giải pháp: Sử dụng thêm <code>\n</code> trong dòng <code>scanf</code> để loại bỏ ký tự
+                    <code>\n</code>
+                  </li>
+                  <div style="background-color: #000000; color: #fff; padding: 10px; border-radius: 5px;">
+                    <pre>int age;</pre>
+                    <pre>char name[50];</pre>
+                    <pre>scanf("%d<b>\n</b>", &age); <b>// Thêm '\n' để loại bỏ ký tự '\n' còn sót lại trong bộ đệm</b></pre>
+                    <pre>fgets(name, sizeof(name), stdin); // Nhập chuỗi có khoảng trắng</pre>
+                  </div>
+                </ul>
+                <b>Ví dụ:</b>
+                <div class="img-center">
+                  <img src="image_tuan5/Loi_ScanfTruocFgets_CODE_KQ.png" alt="LoiNhapChuoi trong C" />
+                  <div class="note">(Lỗi nhập chuỗi trong C)</div>
+                </div>
+                <div class="img-center">
+                  <img src="image_tuan5/SuaLoi_ScanfTruocFgets_CODE_KQ.png" alt="SuaLoiNhapChuoi trong C" />
+                  <div class="note">(Sửa lỗi nhập chuỗi bằng trong C)</div>
+                </div>
+                <b style="color: red">CHÚ Ý:</b>
+                <ul>
+                  <li>
+                    Hàm <b>scanf(%d\n)</b> sẽ buộc nó chờ thêm ký tự không phải khoảng trắng/Enter.
+                  </li>
+                  <li> => Không thể <code>printf</code> phía sau <code>scanf(%d\n)</code> mà không nhập thêm thông tin
+                    gì</li>
+                </ul>
+                <div class="img-center">
+                  <img src="image_tuan5/LoiScanfXetN_CODE_KQ.png" alt="Scanf \n không hiệu quả trong C" />
+                  <div class="note">(Cú pháp nhập scanf \n không hiệu quả trong C)</div>
+                </div>
+                <!-- <ul>
+                  <li> Giải thích: <code>scanf("%d\n", &age);</code> sẽ nhận tuổi và đợi đến khi gõ ký tự khác; Và khi nhập 1 cái gì đó vào thì trùng hợp fget sẽ nhận dữ liệu nên nó sẽ nhận vào chuỗi</li>
+                </ul> -->
+                <ul>
+                  <li>
+                    <strong>Giải thích ngắn gọn:</strong>
+                    <code>scanf("%d\n", &age);</code> đọc tuổi xong vẫn <em>chờ thêm</em> một ký tự <u>không phải
+                      khoảng
+                      trắng</u>.
+                    Vì vậy khi bạn gõ tiếp (ví dụ nhập tên), ký tự đầu tiên đó làm <code>scanf</code> kết thúc; rồi
+                    đến
+                    lượt
+                    <code>fgets</code> đọc phần còn lại nên trông như “vẫn chạy bình thường”.
+                  </li>
+
+                  <li>
+                    <strong>Chi tiết từng phần:</strong>
+                    <ul>
+                      <li>
+                        <code>%d</code>: đọc số nguyên và bỏ qua khoảng trắng đầu vào; dừng ngay trước ký tự không
+                        phải
+                        số (thường là <code>\n</code> do bạn nhấn Enter).
+                      </li>
+                      <li>
+                        <code>\n</code> trong format <code>scanf</code>: nghĩa là “bỏ qua mọi khoảng trắng (space,
+                        tab,
+                        Enter)
+                        <u>cho đến khi</u> gặp một ký tự không trắng”. Vì vậy <code>scanf("%d\n", &age)</code> sẽ đứng
+                        đợi thêm.
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <strong>Hai kịch bản:</strong>
+                    <ul>
+                      <li>
+                        <em>Không có</em> <code>printf("test")</code>:
+                        sau khi nhập tuổi + Enter, bạn gõ ngay tên. Ký tự đầu tiên của tên giúp <code>scanf</code>
+                        thoát;
+                        <code>fgets</code> đọc nốt phần còn lại của dòng &rarr; nhìn như hoạt động bình thường.
+                      </li>
+                      <li>
+                        <em>Có</em> <code>printf("test")</code> ngay sau <code>scanf</code>:
+                        <code>scanf</code> vẫn đang chờ ký tự không trắng, nên chương trình chưa chạy tới
+                        <code>printf</code>.
+                        Chỉ khi bạn gõ thêm (ký tự đầu tiên của tên), <code>scanf</code> mới thoát, rồi mới in “test”.
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+          </div>
+          <div class="noidungminus">* Viết hàm với chuỗi</div>
+          <div class="hidden">
+            <div class="star">
+              <b>Chuỗi</b> vốn là mảng ký tự, nên khi truyền chuỗi vào hàm, thực chất là truyền
+              <b>con trỏ (địa chỉ)</b> đến phần tử đầu tiên của mảng.
+              <h1 class="truoctable">Cách truyền chuỗi vào hàm:</h1>
+              <div class="hidden">
+                <div style="background-color: #000000; color: #fff; padding: 10px; border-radius: 5px;">
+                  void function_name(<b>char str[]</b>) { ... } // Cách 1: Dùng mảng ký tự
+                  <br>void function_name(<b>char str[]</b>,int DoDai) { ... } // Cách 1: Dùng mảng ký tự(optional)
+                  <br /><br>
+                  void function_name(<b>char *str</b>) { ... } // Cách 2: Dùng con trỏ ký tự
+                  <br>void function_name(<b>char *str</b>,int DoDai) { ... } // Cách 2: Dùng con trỏ ký tự(optional)
+                </div>
+                <ul>
+                  <li>
+                    Cả hai cách trên đều tương đương nhau vì mảng ký tự sẽ được chuyển thành con trỏ
+                    khi truyền vào hàm.
+                  </li>
+                  <li>
+                    Trong hàm, bạn có thể sử dụng chuỗi như mảng ký tự thông thường.
+                  </li>
+                  <li><b style="color: red;">CHÚ Ý:</b> Không có cho tham số đầu vào là <code>char *str[]</code></li>
+                </ul>
+              </div>
+              <h1 class="truoctable">Nhập Xuất Chuỗi bằng hàm:</h1>
+              <div class="hidden">
+                <div class="img-center">
+                  <img src="image_tuan5/HamNhapXuatChuoi_COde_KQ.png" alt="Hàm Nhập Xuất Chuỗi trong C" />
+                  <div class="note">(Hàm Nhập Xuất Chuỗi trong C)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="noidungminus">* Dùng con trỏ cho chuỗi</div>
+          <div class="hidden">
+            <div class="star">
+              Như đã nói, chuỗi trong C thực chất là mảng ký tự, và khi truyền vào hàm, nó sẽ được chuyển thành con
+              trỏ
+              và trỏ tới phần tử đầu tiên của mảng.
+              thế nên có thể dùng con trỏ để thao tác với chuỗi.
+              <br>Khi dùng con trỏ, ta có thể sử dụng phép toán cộng để di chuyển con trỏ qua các phần tử của chuỗi.
+              <br>Ví dụ:
+              <div style="background-color: #000000; color: #fff; padding:
+                  10px; border-radius: 5px;">
+                <pre>char str[] = "Hello";</pre>
+                <pre>char *ptr = str; // ptr trỏ tới phần tử đầu tiên của str</pre>
+                <pre>printf("%c\n", *ptr); // In ký tự đầu tiên 'H'</pre>
+                <pre>ptr++; // Di chuyển con trỏ đến ký tự tiếp theo</pre>
+                <pre>printf("%c\n", *ptr); // In ký tự thứ hai 'e'</pre>
+              </div>
+              <b style="color: red;">CHÚ Ý:</b> Con trỏ trong C sẽ bằng <code>char *</code>.
+              <div class="img-center"><img src="image_tuan5/ConTro_Code_KQ.png" alt="Con trỏ trong C">
+                <div class="note">(Con trỏ trong C)</div>
+              </div>
+            </div>
+          </div>
+          <div class="noidungminus">* Thư viện cho chuỗi</div>
+          <div class="hidden">
+            <div class="star">
+              Thư viện <b>string.h</b> cung cấp nhiều hàm hữu ích để thao tác với chuỗi trong C.
+              <h1>Các hàm phổ biến trong <code>string.h</code>:</h1>
+              <table>
+                <tr>
+                  <th>Hàm</th>
+                  <th>Mô tả</th>
+                  <th>Cú pháp</th>
+                  <th>Ví dụ & Kết quả</th>
+                </tr>
+                <tr>
+                  <td><code>strlen</code></td>
+                  <td>Trả về độ dài của chuỗi (không tính ký tự null)</td>
+                  <td><code>size_t strlen(const char *str);</code></td>
+                  <td>
+                    <pre>
+char s[] = "Hello";
+printf("%zu", strlen(s)); // 5
+      </pre>
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>strcpy</code></td>
+                  <td>Sao chép chuỗi từ nguồn sang đích</td>
+                  <td><code>char *strcpy(char *dest, const char *src);</code></td>
+                  <td>
+                    <pre>
+char a[10];
+strcpy(a, "Hi");
+printf("%s", a); // Hi
+      </pre>
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>strcat</code></td>
+                  <td>Nối chuỗi nguồn vào cuối chuỗi đích</td>
+                  <td><code>char *strcat(char *dest, const char *src);</code></td>
+                  <td>
+                    <pre>
+char a[20] = "Hi ";
+strcat(a, "there");
+printf("%s", a); // Hi there
+      </pre>
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>strcmp</code></td>
+                  <td>So sánh hai chuỗi (trả về 0 nếu bằng nhau)</td>
+                  <td><code>int strcmp(const char *str1, const char *str2);</code></td>
+                  <td>
+                    <pre>
+printf("%d", strcmp("abc", "abc")); // 0
+printf("%d", strcmp("abc", "xyz")); // < 0
+      </pre>
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>strlwr</code></td>
+                  <td>Chuyển toàn bộ chuỗi thành chữ thường</td>
+                  <td><code>char *strlwr(char *str);</code></td>
+                  <td>
+                    <pre>
+char s[] = "HELLO";
+printf("%s", strlwr(s)); // hello
+      </pre>
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>strupr</code></td>
+                  <td>Chuyển toàn bộ chuỗi thành chữ hoa</td>
+                  <td><code>char *strupr(char *str);</code></td>
+                  <td>
+                    <pre>
+char s[] = "hello";
+printf("%s", strupr(s)); // HELLO
+      </pre>
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>strchr</code></td>
+                  <td>Tìm ký tự đầu tiên trong chuỗi</td>
+                  <td><code>char *strchr(const char *str, int c);</code></td>
+                  <td>
+                    <pre>
+char s[] = "banana";
+printf("%s", strchr(s, 'n')); // nana
+      </pre>
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>strstr</code></td>
+                  <td>Tìm chuỗi con trong chuỗi</td>
+                  <td><code>char *strstr(const char *haystack, const char *needle);</code></td>
+                  <td>
+                    <pre>
+char s[] = "I like mango";
+printf("%s", strstr(s, "like")); // like mango
+      </pre>
+                  </td>
+                </tr>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <script>
+        let profileSlideIndex = 0;
+        const profilePictureContainer = document.getElementById("profile-picture-container");
+        let profileImages = profilePictureContainer.getElementsByTagName("img");
+        showProfileSlides();
+        function showProfileSlides() {
+            let i;
+            for (i = 0; i < profileImages.length; i++) {
+                profileImages[i].classList.remove("active");
+            }
+            profileSlideIndex++;
+            if (profileSlideIndex > profileImages.length) {
+                profileSlideIndex = 1;
+            }
+            profileImages[profileSlideIndex - 1].classList.add("active");
+            setTimeout(showProfileSlides, 5000); // Đổi ảnh sau mỗi 5 giây
+        }
+        // Dropdown menu scroll
+        document.getElementById("menu").addEventListener("change", function () {
+            let target = document.getElementById(this.value);
+            if (target) target.scrollIntoView({ behavior: "smooth" });
+        });
+
+        // Accordion toggle
+        document.querySelectorAll(".plus").forEach(plus => {
+            plus.addEventListener("click", () => {
+                let content = plus.nextElementSibling;
+                content.classList.toggle("hidden");
+            });
+        });
+        document.querySelectorAll(".minus").forEach(minus => {
+            minus.addEventListener("click", () => {
+                let content = minus.nextElementSibling;
+                content.classList.toggle("hidden");
+            });
+        });
+        document.querySelectorAll(".noidungminus").forEach(noidungminus => {
+            noidungminus.addEventListener("click", () => {
+                let content = noidungminus.nextElementSibling;
+                content.classList.toggle("hidden");
+            });
+        });
+        document.querySelectorAll(".truoctable").forEach(truoctable => {
+            truoctable.addEventListener("click", () => {
+                let content = truoctable.nextElementSibling;
+                content.classList.toggle("hidden");
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>
